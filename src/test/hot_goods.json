@@ -1,0 +1,31 @@
+{
+	"code":200,
+	"message":"success",
+	"data":{
+		"item":[
+		{
+			"goods_id":"56","sorts":"1","status":"1","goods_name":"\u897f\u74dc\u5377","goods_discount":"0","goods_cover":"http://img5.imgtn.bdimg.com/it/u=3642285733,313100662&fm=21&gp=0.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"6","sorts":"2","status":"1","goods_name":"\u8292\u679c\u5377","goods_discount":"0","goods_cover":"http://img3.imgtn.bdimg.com/it/u=3726868659,3688789720&fm=21&gp=0.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"17","sorts":"3","status":"1","goods_name":"\u624b\u5de5\u66f2\u5947\u793c\u76d2","goods_discount":"0","goods_cover":"http://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&word=%E5%9B%BE%E7%89%87%20%E8%9B%8B%E7%B3%95%20%E7%BF%BB%E7%B3%96&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&cs=4120470754,3276969023&os=2047796430,600987882&simid=3402121289,205118936&pn=1&rn=1&di=58011379580&ln=1990&fr=&fmq=1472909467015_R&ic=0&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=&istype=2&ist=&jit=&bdtype=0&adpicid=0&pi=0&gsm=0&objurl=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201408%2F25%2F20140825132841_4RRe5.thumb.700_0.jpeg&rpstart=0&rpnum=0&adpicid=0","goods_type":"1","price":"138.00","original_price":"138.00","is_like":0
+		},
+		{
+			"goods_id":"18","sorts":"4","status":"1","goods_name":"\u624b\u5de5\u66f2\u5947mini\u88c5","goods_discount":"0","goods_cover":"http://img3.imgtn.bdimg.com/it/u=3726868659,3688789720&fm=21&gp=0.jpg","goods_type":"1","price":"28.00","original_price":"28.00","is_like":0
+		},
+		{
+			"goods_id":"54","sorts":"5","status":"1","goods_name":"\u9ed1\u68ee\u6797\u5377","goods_discount":"0","goods_cover":"http://img2.imgtn.bdimg.com/it/u=3163969574,3368285842&fm=21&gp=0.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"55","sorts":"6","status":"1","goods_name":"\u9ed1\u68ee\u6797\u86cb\u7cd5","goods_discount":"0","goods_cover":"http://img2.imgtn.bdimg.com/it/u=3163969574,3368285842&fm=21&gp=0.jpg","goods_type":"1","price":"248.00","original_price":"248.00","is_like":0
+		},
+		{
+			"goods_id":"51","sorts":"7","status":"1","goods_name":"\u5361\u901a\u4e73\u916a\u6155\u65af-\u53ef\u59ae\u5154","goods_discount":"0","goods_cover":"http://img2.imgtn.bdimg.com/it/u=3163969574,3368285842&fm=21&gp=0.jpg","goods_type":"1","price":"188.00","original_price":"188.00","is_like":0
+		},
+		{
+			"goods_id":"47","sorts":"8","status":"1","goods_name":"\u66b4\u8d70\u7684\u8292\u679c\u86cb\u7cd5","goods_discount":"0","goods_cover":"http://img2.imgtn.bdimg.com/it/u=3163969574,3368285842&fm=21&gp=0.jpg","goods_type":"1","price":"268.00","original_price":"268.00","is_like":0
+		}]
+	}
+}
