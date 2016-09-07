@@ -18,7 +18,8 @@ if(DEBUG){
 			search:'/test/search.json',
 			product:'/test/category.json',
 			bask:'/test/show.json',
-			details:'/test/details.json'
+			details:'/test/details.json',
+			detailshow:'/test/detailShow.json',
 		},
 		
 	})
@@ -32,7 +33,8 @@ if(DEBUG){
 			search:'/search',
 			product:'/product',
 			bask:'/bask',
-			details:'/details'
+			details:'/details',
+			detailshow:'/test/detailShow.json',
 		},
 		
 	})

@@ -1,24 +1,28 @@
 @import '../../static/css/sassCore/_function.scss';
 .home-bar{
 	line-height: 60px;
-	overflow: hidden;
+	position: relative;
+	ul{
+		overflow: hidden;
+	}
+	
 	li{
 		float: left;
-		a{
-			padding: 0 5px;
-			display: block;
-			font-size: 12px;
-			color: #CACACA;
-			&.active{
-				color: #FBAE1E;
-			}
+	}
+	a{
+		padding: 0 5px;
+		display: block;
+		font-size: 12px;
+		color: #CACACA;
+		&.active{
+			color: #FBAE1E;
 		}
 	}
 	.home-search{
-		float: right;
-		a{
-			padding: 0 5px;
-		}
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
 	}
 	.icon-search{
 		vertical-align: middle;
@@ -26,20 +30,20 @@
 	}
 }
 
-.transition-homelist-enter {
-  	opacity: 0.01;
-  	@include transition(opacity .5s ease-in);
-}
-.transition-homelist-enter.transition-homelist-enter-active {
-  	opacity: 1;
-}	
-.transition-homelist-leave {
-  	opacity: 1;
-  	@include transition(opacity .5s ease-in);
-}
-.transition-homelist-leave.transition-homelist-leave-active {
-  	opacity: 0.01;
-}
+// .transition-homelist-enter {
+//   	opacity: 0.01;
+//   	@include transition(opacity .5s ease-in);
+// }
+// .transition-homelist-enter.transition-homelist-enter-active {
+//   	opacity: 1;
+// }	
+// .transition-homelist-leave {
+//   	opacity: 1;
+//   	@include transition(opacity .5s ease-in);
+// }
+// .transition-homelist-leave.transition-homelist-leave-active {
+//   	opacity: 0.01;
+// }
 
 
 .mobile-items{

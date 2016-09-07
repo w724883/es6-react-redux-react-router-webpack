@@ -13,6 +13,10 @@
 	background-color: rgba(255,255,255,.8);
 	@include background-size(100px);
 }
+.waiting{
+	height: 300px;
+	text-align: center;
+}
 .transition-loading-enter {
   	opacity: 0.01;
   	@include transition(opacity .2s ease-in);

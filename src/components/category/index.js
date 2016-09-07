@@ -3,6 +3,8 @@ import React,{Component} from 'react';
 import { connect } from 'react-redux';
 // import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
+import * as Actions from '../../actions';
+import {Waiting} from '../loading';
 import Config from '../../config';
 import Nav from '../nav/mobile';
 import 'zepto';
@@ -15,34 +17,50 @@ class Category extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			data:[]
+			data:Waiting
 		}
 	}
-	componentWillMount(){
-		let params = {};
+	getInitData(){
 		let seft = this;
+		let dfd = $.Deferred();
+		let params = {};
 		$.get(Config.api.product,params,function(res){
 			if(res.code == 200){
 				seft.setState({
 					data:res.data
-				})
+				});
+				dfd.resolve();
 			}else{
 				console.log(res.message);
 			}
 		}).fail(function(error){
 			console.log(error)
-		})
+		});
+		return dfd.promise();
+	}
+	componentWillMount(){
+		let dfdTasks = [];
+		let seft = this;
+		dfdTasks.push(this.getInitData());
+		$.when.apply(null,dfdTasks).done(function(){
+			seft.props.dispatch(Actions.setLoading(false));
+		});
+		
 	}
 	componentDidMount(){
 		let seft = this;
 		let params = {};
 		$(seft.refs.container).on('click','.J-slide-item',function(e){
 			let _this = this;
+			seft.setState({
+				data:Waiting
+			})
 			$.get(Config.api.product,params,function(res){
 				if(res.code == 200){
 					seft.setState({
 						data:res.data
 					});
+					
 					$(_this).addClass('active').siblings('.active').removeClass('active');
 				}else{
 					console.log(res.message);
@@ -90,8 +108,8 @@ class Category extends Component{
 	}
 
 	render(){
-		let data = '';
-		if(this.state.data.length){
+		let data = <div dangerouslySetInnerHTML={{__html:Waiting}}></div>;
+		if(typeof this.state.data != 'string' && this.state.data.length){
 			data = this.state.data.map((value,key) => (
 				<li key={key}>
 					<div className="mobile-item">

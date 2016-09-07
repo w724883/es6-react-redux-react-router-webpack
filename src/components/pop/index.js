@@ -1,17 +1,20 @@
 import React from 'react';
 import {setPop} from '../../actions';
 import Login from "../login";
+import CartJoin from "../cart/cartJoin";
 
 class Pop extends React.Component {
 	handleClose(){
 		this.props.dispatch(setPop(false));
 	}
 	render(){
-		var data = this.props.data;
-		var content = '';
+		let data = this.props.data;
+		var content = "";
 		switch(data){
 			case 'login':
 				content = <Login />;break;
+			case 'cartJoin':
+				content = <CartJoin />;break;
 			default:break;
 		}
 		if(data){

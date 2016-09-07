@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import Pop from './pop';
-import Loading from './loading';
+import {Loading} from './loading';
 
 // import Mobile from './mobile';
 // import Pc from './pc';

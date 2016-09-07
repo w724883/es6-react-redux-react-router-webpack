@@ -1,40 +1,45 @@
 @import '../../static/css/sassCore/_function.scss';
 
 // 自定义swiper
-.swiper-slide{
-	a{
-		display: block;
-		width: 100%;
+#focusSwiper{
+	.swiper-slide{
+		a{
+			display: block;
+			width: 100%;
+		}
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+			min-height: 100px;
+		}
 	}
-	img{
-		display: block;
+	.swiper-pagination{
+		position:absolute;
+		text-align:center;
 		width: 100%;
-		height: auto;
-		min-height: 100px;
+		z-index:10;
+		
+	}
+	.swiper-pagination-bullets{
+		bottom:10px;left: 0;
+		line-height: 0;
+	}
+	.swiper-pagination-bullet{
+		width:6px;
+		height:6px;
+		display:inline-block;
+		border-radius:100%;
+		background:#cacaca;
+		vertical-align: middle;
+		margin:0 2px;
+	}
+
+	.swiper-pagination-bullet-active{
+		background:transparent;
+		width: 8px;height: 8px;
+		border: 1px solid #FBAE1E;
 	}
 }
-.swiper-pagination{
-	position:absolute;text-align:center;width: 100%;
-	@include transition(.3s);
-	@include translate3D(0,0,0);
-	z-index:10;
-}
-.swiper-pagination.swiper-pagination-hidden{opacity:0}
-.swiper-container-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-custom,.swiper-pagination-fraction{bottom:10px;left: 0;line-height: 0;}
-.swiper-pagination-bullet{width:6px;height:6px;display:inline-block;border-radius:100%;background:#cacaca;vertical-align: middle;}
-button.swiper-pagination-bullet{
-	border:none;margin:0;padding:0;box-shadow:none;
-	@include appearance(none);
-}
-.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}
-.swiper-pagination-white .swiper-pagination-bullet{background: #fff;}
-.swiper-pagination-bullet-active{background:transparent;width: 8px;height: 8px;border: 1px solid #FBAE1E;}
-.swiper-pagination-white .swiper-pagination-bullet-active{background:#fff}
-.swiper-pagination-black .swiper-pagination-bullet-active{background:#000}
-.swiper-container-vertical>.swiper-pagination-bullets{
-	right:10px;top:50%;
-	@include translate3D(0,-50%);
-}
-.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{margin:5px 0;display:block}
-.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 2px}
+
+
