@@ -1,0 +1,9 @@
+RewriteEngine on
+#RewriteCond $1 !^(index\.php|public|payapi|uploads|robots\.txt|favicon\.ico)
+#RewriteRule ^(.*)$ /index.php/$1 [L]
+
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
