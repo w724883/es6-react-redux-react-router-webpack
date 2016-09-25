@@ -1,23 +1,32 @@
 import React from 'react';
 import {setPop} from '../../actions';
-import Login from "../login";
-import CartJoin from "../cart/cartJoin";
-
+import Login from "../login/mobile";
+import CartJoin from "./cartJoin";
+import CartModify from "./cartModify";
+import CartAdd from "./cartAdd";
+import "./mobile.scss"
 class Pop extends React.Component {
 	handleClose(){
-		this.props.dispatch(setPop(false));
+		this.props.dispatch(setPop({
+			show:false
+		}));
 	}
 	render(){
-		let data = this.props.data;
+		let state = this.props.state;
+		let show = state.pop.show;
 		var content = "";
-		switch(data){
+		switch(show){
 			case 'login':
 				content = <Login />;break;
 			case 'cartJoin':
 				content = <CartJoin />;break;
+			case 'cartModify':
+				content = <CartModify state={state} dispatch={this.props.dispatch} />;break;
+			case 'cartAdd':
+				content = <CartAdd state={state} dispatch={this.props.dispatch} />;break;
 			default:break;
 		}
-		if(data){
+		if(show){
 			return (
 				<div className="pop">
 					<div className="pop-bg" onClick={this.handleClose.bind(this)}></div>

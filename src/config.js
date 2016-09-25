@@ -1,3 +1,4 @@
+import "zepto";
 let Config = {
 	media:768,
 	path:{
@@ -5,11 +6,15 @@ let Config = {
 		search:'/search',
 		category:'/category',
 		show:'/show',
-		details:'/details'
+		details:'/details',
+		cart:'/cart',
+		order:'/order',
+		pay:'/pay',
+		personal:'/personal'
 	}
 };
 if(DEBUG){
-	Object.assign(Config,{
+	$.extend(Config,{
 		api:{
 			advertisement:'/test/advertisement.json',
 			hot_goods:'/test/hot_goods.json',
@@ -20,11 +25,13 @@ if(DEBUG){
 			bask:'/test/show.json',
 			details:'/test/details.json',
 			detailshow:'/test/detailShow.json',
+			cartlist:'/test/cartlist.json',
+			joincart:'/test/cartlist.json',
 		},
 		
 	})
 }else{
-	Object.assign(Config,{
+	$.extend(Config,{
 		api:{
 			advertisement:'/advertisement',
 			hot_goods:'/hot_goods',
@@ -35,6 +42,8 @@ if(DEBUG){
 			bask:'/bask',
 			details:'/details',
 			detailshow:'/test/detailShow.json',
+			cartlist:'/test/cartlist.json',
+			joincart:'/test/cartlist.json',
 		},
 		
 	})

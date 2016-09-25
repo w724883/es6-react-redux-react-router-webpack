@@ -1,0 +1,228 @@
+@import '../../static/css/sassCore/_function.scss';
+.details{
+	padding: 0 0 40px;
+}
+.details-content{
+	border-top: 1px solid #eee;
+}
+.details-info{
+	
+	padding: 30px 0;
+	margin: 0 15px;
+	position: relative;
+	border-bottom: 1px solid rgba(155,154,155,0.20);
+	h1{
+		font-size: 14px;
+		color: #4A4A4A;
+	}
+	span{
+		font-size: 12px;
+		color: #FBAE1E;
+	}
+	p{
+		font-size: 10px;
+		color: #9B9B9B;
+	}
+	a{
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		font-size: 10px;
+		color: #CACACA;
+		padding: 0 5px;
+		text-align: center;
+		em{
+			display: inline-block;
+			vertical-align: middle;
+			font-style: normal;
+		}
+	}
+	i{
+		font-size: 15px;
+	}
+}
+
+.details-filter{
+	padding: 15px 0;
+	margin: 0 15px;
+	border-bottom: 1px solid rgba(155,154,155,0.20);
+	label{
+		display: block;
+		font-size: 10px;
+		color: #CACACA;
+		padding: 0 0 15px;
+	}
+
+	
+}
+.details-filter-item{
+	padding: 0 0 30px;
+    margin: 0 0 -15px;
+	overflow: hidden;
+	li{
+		height: 32px;
+		line-height: 32px;
+		font-size: 12px;
+		color: #CACACA;	
+		text-align: center;
+		border: 1px solid #FBAE1E;
+		padding: 0 15px;
+		float: left;
+		margin: 0 15px 15px 0;
+		overflow: hidden;
+		@include border-radius(2px);
+		&.active{
+			background: #FBAE1E;
+			color: #fff;
+		}
+	}
+}
+
+
+
+
+
+// .transition-detail-enter {
+//   	@include translate3D(-100%,0,0);
+//   	@include transition(transform 3s ease-in);
+// }
+// .transition-detail-enter.transition-detail-enter-active {
+//   	@include translate3D(0,0,0);
+// }	
+// .transition-detail-leave {
+//   	@include translate3D(100%,0,0);
+//   	@include transition(transform 3s ease-in);
+// }
+// .transition-detail-leave.transition-detail-leave-active {
+//   	@include translate3D(0,0,0);
+// }
+#detailsSwiper{
+	.swiper-navigator{
+		text-align: center;
+		&.fixed{
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 10;
+			width: 100%;
+			padding: 10px 0;
+			background-image: linear-gradient(-180deg, #FBFBFB 0%, #F5F5F5 100%);
+			background-color: #FBFBFB;
+			border-bottom: 1px solid #CACACA;
+			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.05);
+		}
+	}
+	.swiper-inline{
+		display: inline-block;
+	}
+	.swiper-pagination{
+		font-size: 0;
+		span{
+			display: inline-block;
+			padding: 0 15px;
+			font-size: 12px;
+			color: #CACACA;
+			position: relative;
+			&.active{
+				color:#7B8E3D;
+			}
+			i{
+				position: absolute;
+				top: 0;
+				left: 100%;
+				height: 20px;
+				line-height: 20px;
+				background: #CACACA;
+				font-size: 9px;
+				color: #fff;
+				padding: 0 5px;
+				font-style: normal;
+				letter-spacing: 1px;
+				margin: 0 0 0 -5px;
+				@include border-radius(10px);
+			}
+		}
+		
+	}
+	.swiper-scroll{
+		margin: 5px 0 0;
+		&:after{
+			content: '';
+			display: block;
+			margin: 0 15px;
+			height: 2px;
+			background: #7B8E3D;
+		}
+		@include transition(transform .5s ease-in-out);
+	}
+}
+
+
+.details-about{
+	padding: 0 0 20px;
+	border-bottom: 1px solid #9B9B9B;
+	.swiper-navigator{
+		padding: 30px 0 20px;
+	}
+}
+.detail-desc{
+	padding: 0 15px;
+}
+.detailShow-list{
+	overflow: hidden;
+	li{
+		padding: 24px 15px;
+		border-bottom: 1px solid rgba(155,154,155,0.20);
+	}
+	
+}
+.detailShow-head{
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin: 0 10px 0 0;
+	overflow: hidden;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #eee;
+	@include background-size(cover);
+	@include background-clip(padding-box);
+	@include border-radius(100%);
+}
+.detailShow-info{
+	overflow: hidden;
+	strong{
+		font-size: 12px;
+		color: #4A4A4A;
+		margin: 0 10px 0 0;
+	}
+	i{
+		font-size: 14px;
+		color: #FBAE1E;
+		margin: 0 5px 0 0;
+	}
+	span{
+		float: right;
+		font-size: 10px;
+		color: #CACACA;
+	}
+	p{
+		font-size: 10px;
+		color: #9B9B9B;
+		margin: 10px 0;
+	}
+}
+.detailShow-items{
+	overflow: hidden;
+}
+.detailShow-item{
+	width: 45px;
+	height: 45px;
+	float: left;
+	margin: 0 3px 3px 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid rgba(202,202,202,0.30);
+	@include background-size(contain);
+}

@@ -1,4 +1,7 @@
 import React,{Component} from 'react';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../../actions';
 import {Link} from 'react-router';
 import Config from '../../config';
 import "zepto";
@@ -6,15 +9,17 @@ import "./mobile.scss";
 
 class Search extends Component{
 	render(){
+		let {state,dispatch} = this.props;
+		let boundActionCreators = bindActionCreators(Actions, dispatch);
 		return (
 			<div className="search">
 				<div className="search-fixed">
-					<Input setSearch={this.props.setSearch} data={this.props.data} />
+					<Input {...boundActionCreators} data={state.searchData} handleClose={this.props.handleClose}/>
 				</div>
 				
 				<ul className="mobile-items">
 					{
-						this.props.data.data.length ? this.props.data.data.map((value,key) => (
+						state.searchData.data.length ? state.searchData.data.map((value,key) => (
 							<li key={key}>
 								<div className="mobile-item">
 									<div className="mobile-img"><a href="/" style={{backgroundImage:"url("+value.goods_cover+")"}}></a></div>
@@ -45,6 +50,9 @@ class Input extends Component{
 			value:value
 		})
 	}
+	handleClose(){
+		this.props.handleClose();
+	}
 	handleClick(){
 		let self = this;
 		$.get(Config.api.search,{keyword:this.state.value},function(res){
@@ -69,10 +77,10 @@ class Input extends Component{
 			<div className={this.props.data.data.length ? "search-input search-result" : "search-input"}>
 				<label htmlFor="search" className="icon-search"></label>
 				<input onChange={this.handleChange.bind(this)} type="text" placeholder="输入关键字" defaultValue={this.state.value} />
-				{(!value || value == originValue) ? <Link to="/" className="icon-close"></Link> : <a onClick={this.handleClick.bind(this)} className="search-button" href="javascript:;">搜索</a>}
+				{(!value || value == originValue) ? <a href="javascript:;" onClick={this.handleClose.bind(this)} className="icon-close"></a> : <a onClick={this.handleClick.bind(this)} className="search-button" href="javascript:;">搜索</a>}
 			</div>
 		)
 	}
 }
-
+Search = connect(state => ({state}))(Search);
 export default Search;

@@ -1,0 +1,56 @@
+@import '../../static/css/sassCore/_function.scss';
+
+.slide-container{
+	overflow: hidden;
+	width: 100%;
+}
+.slide-items{
+	overflow: hidden;
+	// @include clearfix(true);
+}
+.slide-item{
+	float: left;
+}
+
+.category{
+	padding: 0 0 32px;
+	.slide-container{
+		height: 60px;
+		line-height: 60px;
+		position: relative;
+		&:after{
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background:#eee;
+		}
+	}
+	.slide-items{
+		position: relative;
+		z-index: 1;
+	}
+	.slide-item{
+		position: relative;
+		text-align: center;
+		&.active:after{
+			content: '';
+			display: block;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 1px;
+			background: #FBAE1E;
+			z-index: 1;
+		}
+	}
+}
+
+.category-content{
+	padding: 15px 10px;
+}
+

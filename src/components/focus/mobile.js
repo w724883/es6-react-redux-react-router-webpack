@@ -4,11 +4,8 @@ import '../../libs/swiper/swiper.css';
 import './mobile.scss';
 // import 'zepto';
 class Focus extends Component {
-	constructor(props){
-		super(props);
-
-	}
 	componentDidMount(){
+		let self = this;
 		if(this.props.data.length && !this.swiper){
 			this.swiper = new Swiper('#focusSwiper', {
 			    pagination: '#focusSwiper .swiper-pagination',
@@ -16,7 +13,14 @@ class Focus extends Component {
 			    paginationClickable: true,
 			    autoplay:5000,
 			    autoplayDisableOnInteraction:false,
-			    loop: true
+			    loop: true,
+			    // onInit:function(){
+			    // 	setTimeout(function(){
+			    // 		let dfd = self.props.dfd;
+			    // 		dfd && dfd.resolve();
+			    // 	},2000)
+			    	
+			    // }
 			});
 		}
 	}

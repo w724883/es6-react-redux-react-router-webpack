@@ -1,0 +1,254 @@
+@import '../../static/css/sassCore/_function.scss';
+.order{
+	padding: 30px 0 40px;
+}
+.order-item{
+	.hide{
+		display: none;
+	}
+}
+.order-header{
+	padding: 22px 0;
+	margin: 0 15px;
+	border-bottom: 1px solid rgba(155,154,155,0.20);
+	font-size: 12px;
+	color: #CACACA;
+	overflow: hidden;
+}
+.order-title{
+	color: #4A4A4A;
+	margin: 0 10px 0 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+.order-title-desc{
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	width: 40%;
+}
+.order-header-right{
+	float: right;
+	.icon-add{
+		font-size: 16px;
+	}
+}
+.order-box{
+	border-bottom: 1px solid rgba(155,154,155,0.20);
+}
+.order-calendar{
+	.order-box{
+		padding: 20px 0 0;
+	}
+	.mbsc-mobiscroll .dwwr{
+		background: #fff;
+		color: #FCC96A;
+		font-size: 18px;
+		.dw-cal-day-diff{
+			color: #454545;
+		}
+		.dw-cal-btnw{
+			color: #9B9B9B;
+		}
+		.dw-cal-btn-txt{
+			color: #CACACA;
+		}
+		.dw-cal-days{
+			color: #CACACA;
+			border: none;
+		}
+		.dw-sel .dw-i{
+			background: #F5A623;
+			font-size: 16px;
+			overflow: hidden;
+			@include border-radius(100%);
+		}
+		.dw-cal-today{
+			color: #7B8E3D;
+		}
+	}
+}
+.order-distribution{
+	.order-box{
+		padding: 0 15px 15px;
+	}
+	.checkbox{
+		margin: 0 10px 0 0;
+	}
+	.active{
+		color: #FBAE1E;
+	}
+	label{
+		display: block;
+		overflow: hidden;
+		font-size: 12px;
+		color: #9B9B9B;;
+		margin: 15px 0;
+	}
+	.order-header-right{
+		font-size: 10px;
+	}
+	ul{
+		overflow: hidden;
+		padding: 0 0 0 26px;
+	}
+	li{
+		float: left;
+		width: 86px;
+		height: 22px;
+		line-height: 22px;
+		border: 1px solid #CACACA;
+		font-size: 12px;
+		color: #CACACA;
+		text-align: center;
+		margin: 0 5px 5px 0;
+		@include border-radius(2px);
+		&.active{
+			border: 1px solid #FBAE1E;
+		}
+	}
+}
+.order-distribution-right{
+	float: right;
+}
+.order-address{
+	font-size: 12px;
+	color: #FBAE1E;
+	overflow: hidden;
+	padding: 0 0 0 26px;
+	margin: 15px 0 0;
+	a{
+		color: #CACACA;
+		float: right;
+	}
+}
+
+
+.order-discount{
+	.order-box{
+		padding: 0 15px;
+	}
+	.checkbox{
+		margin: 0 10px 0 0;
+	}
+	.order-discount-label{
+		display: block;
+		overflow: hidden;
+		font-size: 12px;
+		color: #9B9B9B;;
+		margin: 15px 0;
+	}
+	.order-discount-right{
+		float: right;
+	}
+}
+
+.order-coupon{
+	label{
+		position: relative;
+		display: block;
+	    padding: 0 0 0 26px;
+	    margin: 10px 0;
+	}
+	.vertical-middle{
+		display: block;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+.order-coupon-red{
+	color: #F81CF6;
+	.order-coupon-about{
+		background: #F81CF6;
+	}
+}
+.order-coupon-blue{
+	color: #1CCBF8;
+	.order-coupon-about{
+		background: #1CCBF8;
+	}
+}
+.order-coupon-list{
+	background: #fff;
+	border: 1px solid rgba(202,202,202,0.30);
+	padding: 5px 100px 5px 5px;
+	position: relative;
+}
+.order-coupon-about{
+	width: 150px;
+	padding: 10px;
+	position: relative;
+	&:after{
+		content:'';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: -1px;
+		width: 5px;
+		height: 100%;
+		background-repeat: repeat-y;
+		background-position: top right;
+		background-image: url(../../static/imgs/radius.png);
+		@include background-size(contain);
+
+	}
+	strong{
+		font-size: 12px;
+		color: #fff;
+		font-weight: normal;
+		margin: 0 10px 0 0;
+	}
+	span{
+		display: inline-block;
+		font-size: 8px;
+		padding: 1px 5px;
+		background: #fff;
+		vertical-align: middle;
+		@include border-radius(2px);
+	}
+	p{
+		opacity: 0.5;
+		font-size: 10px;
+		color: #fff;
+		margin: 10px 0 0;
+	}
+}
+.order-coupon-info{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 90px;
+	height: 100%;
+	text-align: center;
+	p{
+		font-size: 14px;
+		color: #808080;
+		margin: 15px 0 8px;
+	}
+	span{
+		font-size: 10px;
+	}
+}
+.order-remark{
+	.order-box{
+		padding: 15px;
+	}
+	textarea{
+		display: block;
+		width: 100%;
+		height: 90px;
+		background: #fff;
+		border: 1px solid rgba(155,154,155,0.20);
+		font-size: 12px;
+		color: #CACACA;
+		padding: 10px;
+		resize: none;
+		outline: none;
+		@include box-sizing(border-box);
+	}
+}
+

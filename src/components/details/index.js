@@ -6,7 +6,8 @@ import Config from '../../config';
 import * as Actions from '../../actions';
 import {Waiting} from '../loading';
 import Focus from '../focus/mobile';
-import Number from '../number';
+import Num from '../number';
+import CartFixed from '../cart/cartFixed';
 import "zepto";
 import "./index.scss";
 
@@ -67,9 +68,7 @@ class Details extends Component{
 			console.log(error);
 		});
 	}
-	handleCart(){
-		this.props.dispatch(Actions.setPop('cartJoin'));
-	}
+	
 	renderStar(n){
 		let stars = new Array(n);
 		return stars.map((v,k) => (
@@ -230,7 +229,7 @@ class Details extends Component{
 						</ul>
 						<label>选择数量</label>
 						<div className="details-filter-item">
-							<Number />
+							<Num min="1" />
 						</div>
 					</div>
 					<div className="details-about">
@@ -250,16 +249,7 @@ class Details extends Component{
 						</div>
 					</div>
 				</div>
-				<div className="cart-fixed">
-					<div className="cart-bar">
-						<p>
-							<i className="icon-product"></i>
-							<strong>已选 <span className="price">688.00</span></strong>
-						</p>
-						
-						<a href="javascript:;" onClick={this.handleCart.bind(this)}>放入购物车</a>
-					</div>
-				</div>
+				<CartFixed dispatch={this.props.dispatch} />
 			</div>
 		)
 	}
