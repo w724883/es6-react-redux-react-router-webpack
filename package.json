@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "cross-env DEBUG=1 webpack -w",
-    "build": "cross-env DEBUG=0 webpack"
+    "start": "cross-env DEBUG=0 webpack"
   },
   "author": "weiruizhe",
   "license": "ISC",

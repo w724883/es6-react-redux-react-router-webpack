@@ -15,38 +15,48 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 是否开启调试功能，上线需设为false
 var DEBUG = process.env.DEBUG;
-var cssPath = '';
-var jsPath = '';
-var staticPath = '';
+DEBUG = DEBUG == '0' ? 0 : 1;
 var config = {
   //页面入口文件配置
   entry: {
       // 线下测试数据，上线需去掉
       // bnjs:['./mockup/bnjs.js'],
       // zepto:['./components/zepto/zepto.js'],
-      index : [
+      mobile : [
           // 'webpack-dev-server/client?http://m.ijuanshi.com/',
           // 'webpack/hot/only-dev-server',
           // 'webpack-hot-middleware/client',
-          './src/index.js'
+          './src/mobile.js'
       ],
+      pc:[
+        './src/pc.js'
+      ]
   },
   //入口文件输出配置
   output: {
-      path:path.join(__dirname, 'output'),
-      filename: jsPath+'js/[name].js',
+      path:path.join(__dirname, DEBUG?'output':'../ijuanshi/public/frontend'),
+      filename: 'js/[name].js',
   },
   // 插件项
   plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-          name: "common",
-          filename:"common.js",
-          minChunks: 2
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //     name: "common",
+      //     filename:"common.js",
+      //     minChunks: 2
+      // }),
       new HtmlWebpackPlugin({
           filename: 'index.html',
           inject: 'body',
-          template: './src/html/index.html',
+          chunks:['mobile'],
+          template: './src/html/mobile.html',
+          chunksSortMode:'dependency',
+          hash:true,
+      }),
+      new HtmlWebpackPlugin({
+          filename: 'pc.html',
+          inject: 'body',
+          chunks:['pc'],
+          template: './src/html/pc.html',
           chunksSortMode:'dependency',
           hash:true,
       }),
@@ -56,7 +66,7 @@ var config = {
       //         warnings: false, // Suppress uglification warnings
       //     },
       // }),
-      new ExtractTextPlugin(cssPath+"css/[name].css"),
+      new ExtractTextPlugin("css/[name].css"),
 
       // definePlugin 接收字符串插入到代码当中, 所以你需要的话可以写上 JS 的字符串
       // new webpack.DefinePlugin({
@@ -114,7 +124,7 @@ var config = {
           },
           {
               test: /\.(jpe?g|png|gif|eot|ttf|woff|svg)/i,
-              loader: 'url-loader?limit=5120&name='+staticPath+'static/[name].[ext]'
+              loader: 'url-loader?limit=5120&name=static/[name].[ext]'
           },
           {
               test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
@@ -173,11 +183,9 @@ if(DEBUG){
     }));
     
     // 配置静态资源引入路径
-    config.output.publicPath = 'http://m.ijuanshi.com/';
+    config.output.publicPath = 'http://www.cake.com/';
 
-    cssPath = '../../ijuanshi/public/frontend/';
-    jsPath = '../../ijuanshi/public/frontend/';
-    staticPath = '../../ijuanshi/public/frontend/';
+    
     
 }
 module.exports = config;
