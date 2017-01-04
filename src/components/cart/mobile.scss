@@ -1,8 +1,18 @@
 @import '../../static/css/sassCore/_function.scss';
 
 .cart{
-	padding: 30px 0 40px;
-
+	padding: 2rem 0 2.5rem;
+	.disable{
+		label,a{
+			opacity: 0.5;
+			pointer-events:none;
+		}
+		.enable{
+			opacity: 1;
+			pointer-events:auto;
+		}
+	}
+	
 }
 // .cart-bar{
 // 	position: fixed;
@@ -25,8 +35,12 @@
 	border-bottom: 1px solid rgba(155,154,155,0.20);
 	li{
 		position: relative;
-		padding: 0 25px;
-		margin: 15px 0;
+		padding: 0 3.5rem 0 25px;
+		margin: 30px 0;
+		// @include translate3D(0,0,0);
+		// &.remove{
+		// 	@include translate3D(-100px,0,0);
+		// }
 		label{
 			position: absolute;
 			top: 0;
@@ -41,7 +55,7 @@
 }
 .cart-list-header{
 	border-bottom:1px solid rgba(155,154,155,0.20);
-	font-size: 12px;
+	font-size: 0.75rem;
 	color: #9B9B9B;
 	overflow: hidden;
 	.checkbox{
@@ -50,23 +64,25 @@
 }
 .cart-list-tips{
 	float: right;
-	font-size: 10px;
+	font-size: 0.625rem;
 	color: #CACACA;
 }
 
 .cart-list-about{
 	display: block;
 	position: relative;
-	padding: 0 0 0 50px;
+	padding: 0 0 0 3.125rem;
+	height: 2.625rem;
+	// overflow: hidden;
 }
 .cart-list-head{
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 40px;
-	height: 40px;
+	width: 2.5rem;
+	height: 2.5rem;
 	background: #F5F5F5;
-	border: 1px solid #7B8E3D;
+	border: 1px solid #809FB5;
 	overflow: hidden;
 	@include border-radius(100%);
 	@include background-size(cover);
@@ -74,16 +90,30 @@
 }
 .cart-list-info{
 	width: 100%;
-	font-size: 10px;
+	font-size: 0.625rem;
 	white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
 	p{
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: #4A4A4A;
 		margin: 0 0 8px 0;
-		text-overflow: ellipsis;
-		overflow: hidden;
+		
+		// position: relative;
+		// padding: 0 50px 0 0;
+		span{
+			display: inline-block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			vertical-align: middle;
+			max-width: 70%;
+		}
+		em{
+			display: inline-block;
+			width: 30%;
+			text-align: right;
+			vertical-align: middle;
+		}
 	}
 	span{
 		color: #9B9B9B;
@@ -95,36 +125,48 @@
 	}
 }
 .cart-list-edit{
-	display: block;
 	position: absolute;
 	top: 0;
 	right: 0;
+	z-index: 10;
 	height: 100%;
 	color: #CACACA;
-	font-size: 16px;
+	a{
+		color: #CACACA;
+		font-size: 1rem;
+		display: inline-block;
+		vertical-align: middle;
+		padding: 0 0 0 0.8rem;
+	}
 }
+
 
 .cart-add{
 	@extend .cart-list;
 	.cart-add-header{
-		padding: 0;
+		padding: 0 30px 0 0;
 	}
 }
 .cart-add-header{
-	font-size: 10px;
+	font-size: 0.625rem;
 	color: #CACACA;
 	overflow:hidden;
+	
+	position: relative;
 	span{
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: #9B9B9B;
 		margin: 0 10px 0 0;
 	}
 	a{
-		float: right;
-		font-size:13px;
+		// float: right;
+		font-size:0.8125rem;
 		color: #CACACA;
-		font-size: 16px;
-		color: #CACACA;
+		font-size: 1rem;
+		// color: #CACACA;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 }
 .cart-add-about{
@@ -145,7 +187,7 @@
 }
 .cartModify-list-info{
 	@extend .cart-list-info;
-	
+
 }
 .cartModify-list-edit{
 	@extend .cart-list-edit;
@@ -163,5 +205,3 @@
 .cartAdd-list-edit{
 	@extend .cartModify-list-edit;
 }
-
-

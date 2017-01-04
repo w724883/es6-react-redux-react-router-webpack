@@ -4,8 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "cross-env DEBUG=1 webpack -w",
-    "start": "cross-env DEBUG=0 webpack"
+    "test_m": "cross-env DEBUG=1 M=1 webpack -w",
+    "test_p": "cross-env DEBUG=1 M=0 webpack -w",
+    "start_m": "cross-env DEBUG=0 M=1 webpack -w",
+    "start_p": "cross-env DEBUG=0 M=0 webpack -w"
   },
   "author": "weiruizhe",
   "license": "ISC",
@@ -21,17 +23,19 @@
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.6.5",
     "jsx-loader": "^0.13.2",
-    "node-sass": "^3.8.0",
+    "node-sass": "^3.13.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.16.0",
     "masonry-layout": "^4.1.1",
     "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.3.1",
+    "react-lazyload": "^2.2.0",
     "react-masonry-component": "^4.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",

@@ -33,7 +33,8 @@
 }
 .show-img{
 	background: #F5F5F5;
-	border-bottom: 1px solid #eee;
+	// border-bottom: 1px solid #eee;
+	margin: -1px;
 	border-radius: 3px 3px 0px 0px;
 	a{
 		display: block;
@@ -48,7 +49,7 @@
 .show-about{
 	padding: 6px 5px 10px;
 	p{
-		font-size: 10px;
+		font-size: 0.625rem;
 		color: #9B9B9B;
 
 	}
@@ -58,12 +59,19 @@
 	margin: 10px 0 0;
 	position: relative;
 	a{
-		color: #FBAE1E;
-		font-size: 14px;
+		color: #cacaca;
+		font-size: 0.5rem;
 		position: absolute;
 		top: 0;
 		right: 0;
 		height: 100%;
+		text-align: center;
+		i{
+			color: #C34765;
+			font-size: 0.75rem;
+			display: block;
+			margin: 0 0 2px 0;
+		}
 	}
 }
 .show-userhead{
@@ -81,7 +89,7 @@
 .username{
 	float: left;
 	overflow: hidden;
-	font-size: 8px;
+	font-size: 0.5rem;
 	strong{
 		display: block;
 		color: #4A4A4A;

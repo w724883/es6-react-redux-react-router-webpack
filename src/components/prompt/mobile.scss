@@ -1,0 +1,75 @@
+@import '../../static/css/sassCore/_function.scss';
+.prompt{
+    width: 100%;
+    height: 100%;
+   
+    .layer{
+        background-color: rgb(245,245,245); 
+    }
+}
+.prompt-content{
+    width: 90%;
+    height: 250px;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    border: 1px solid rgba(202,202,202,0.2);
+    @include border-radius(5px);
+}
+
+.prompt-pay{
+   text-align: center;
+   p{
+       color: #9B9B9B;
+       font-size: 0.75rem;
+       margin: 0 8px;
+   }
+   span{
+       color: #CACACA;
+       font-size: 0.625rem;
+   } 
+}
+.prompt-pay-icon{
+    width: 60px;
+    height: 60px;
+    margin: 20px auto 10px;
+    background-color: #CACACA;
+    font-size: 1rem;
+    color: #fff;
+    
+    line-height: 64px;
+    @include border-radius(100%);
+    @include background-clip(padding-box);
+}
+.prompt-error{
+    @extend .prompt-pay;
+}
+.prompt-error-icon{
+    @extend .prompt-pay-icon;
+}
+
+
+.prompt-btns{
+    margin: 20px 0 0;
+    border-top: 1px solid rgb(245,245,245);
+    a{
+        font-size: 0.625rem;
+        color: #809FB5;
+        display: block;
+    }
+    .active{
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 20px;
+        background-color: #C34765;
+        color: #fff;
+        font-size: 0.75rem;
+        margin: 20px 0 10px;
+        @include border-radius(32px);
+    }
+}

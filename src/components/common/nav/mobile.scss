@@ -1,0 +1,29 @@
+@import '../../../static/css/sassCore/_function.scss';
+.nav-mobile{
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+	background: #809FB5;
+	@include box-shadow(0 -2px 10px 0 rgba(0,0,0,0.1), 0 0 0 0 #809FB5);
+	font-size: 0;
+	text-align: center;
+	padding: 8px 0;
+	a{
+		width: 20%;
+		font-size: 0.625rem;
+		color: #fff;
+		display: inline-block;
+		line-height: 10px;
+		opacity: 0.5;
+		&.active{
+			opacity: 1;
+		}
+		i{
+			font-size: 1rem;
+			display: block;
+			margin: 0 0 4px;
+		}
+	}
+}

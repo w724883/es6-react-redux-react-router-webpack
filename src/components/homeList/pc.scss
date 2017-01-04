@@ -1,32 +1,23 @@
 @import '../../static/css/sassCore/_function.scss';
 .home-bar{
 	line-height: 60px;
+	margin: 30px 0 10px;
 	position: relative;
 	ul{
 		overflow: hidden;
 	}
-	
+
 	li{
-		float: left;
+		display: inline-block;
 	}
 	a{
 		padding: 0 5px;
 		display: block;
-		font-size: 12px;
+		font-size: 18px;
 		color: #CACACA;
 		&.active{
-			color: #FBAE1E;
+			color: #C34765;
 		}
-	}
-	.home-search{
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-	}
-	.icon-search{
-		vertical-align: middle;
-		margin: 0 5px;
 	}
 }
 
@@ -36,7 +27,7 @@
 // }
 // .transition-homelist-enter.transition-homelist-enter-active {
 //   	opacity: 1;
-// }	
+// }
 // .transition-homelist-leave {
 //   	opacity: 1;
 //   	@include transition(opacity .5s ease-in);
@@ -50,14 +41,14 @@
 	overflow: hidden;
 	li{
 		float: left;
-		width: 50%;
+		width: 25%;
 	}
 }
 .mobile-item{
-	margin: 0 5px 10px;
+	margin: 0 6px 10px;
 }
 .mobile-img{
-	height: 187px;
+	height: 396px;
 	background-color: #F5F5F5;
 	border:1px solid #eee;
 	position: relative;
@@ -66,7 +57,7 @@
 		height: 100%;
 		background-position: center;
 		background-repeat: no-repeat;
-		@include background-size(contain);
+		@include background-size(cover);
 	}
 }
 .mobile-tag{
@@ -79,15 +70,15 @@
 	padding: 0 5px;
 	font-size: 8px;
 	color: #fff;
-	background: #CDDA9F;
-	box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
+	background: #C34765;
+	@include box-shadow(0px 5px 10px 0px rgba(0,0,0,0.1));
 	@include border-radius(16px);
 }
 .mobile-about{
-	font-size: 10px;
-	padding:5px 20px 0 0;
+	font-size: 16px;
+	padding:8px 24px 0 0;
 	position: relative;
-	line-height: 1.5;
+	line-height: 1.8;
 	p{
 		color: #9B9B9B;
 		white-space: nowrap;
@@ -96,10 +87,11 @@
 	}
 	span{
 		color: #4A4A4A;
+		font-size: 14px;
 	}
 	a{
 		color: #CACACA;
-		font-size: 15px;
+		font-size: 24px;
 		position: absolute;
 		top: 0;
 		right: 0;

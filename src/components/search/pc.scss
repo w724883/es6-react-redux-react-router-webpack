@@ -1,66 +1,42 @@
 @import '../../static/css/sassCore/_function.scss';
+
+// .slide-container{
+// 	overflow: hidden;
+// 	width: 100%;
+// }
+// .slide-items{
+// 	overflow: hidden;
+// 	// @include clearfix(true);
+// }
+// .slide-item{
+// 	float: left;
+// }
+
 .search{
-	padding: 50px 0 0;
-	.mobile-items{
-		padding: 15px 10px 0;
+	padding: 74px 0 0;
+}
+
+.search-content{
+	padding: 30px 10px;
+	min-height: 800px;
+}
+
+.search-nav{
+	text-align: center;
+	background-color: #F5F5F5;
+	padding: 50px 0;
+	h2{
+		font-size: 26px;
+		color: #4A4A4A;
 	}
-}
-.search-fixed{
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	background:#fff;
-}
-.search-input{
-	border: 1px solid rgba(155,154,155,0.20);
-	border-radius: 3px;
-    margin: 10px;
-	height: 46px;
-	line-height: 46px;
-	position: relative;
-	a,label{
-		padding: 0 10px;
+	p{
 		font-size: 14px;
 		color: #CACACA;
-		position: absolute;
-		top: 0;
-		height: 100%;
-		display: block;
-		line-height: 46px;
+		margin: 30px 0 15px;
 	}
-	.icon-search{
-		left: 0;
-	}
-	.icon-close{
-		right: 0;
-	}
-	input{
-		border:none;
-		width: 100%;
-		outline: none;
-		height: 32px;
-		line-height: 32px;
-		font-size: 14px;
-		color: #7B8E3D;
-		padding: 0 32px;
-		@include box-sizing(border-box);
-	}
-	.search-button{
-		color: #7B8E3D;
-		right: 0;
-	}
-}
-.search-result{
-
-	border-bottom: 1px solid rgba(155,154,155,0.20);
-	padding: 0 10px;
-	margin: 0;
-	.icon-search{
-		padding: 0 5px 0 15px;
-	}
-	.icon-close{
-		padding: 0 15px 0 5px;
+	a{
+		font-size: 16px;
+		color: #CACACA;
+		margin: 0 10px;
 	}
 }

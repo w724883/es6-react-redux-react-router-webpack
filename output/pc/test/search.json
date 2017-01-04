@@ -1,0 +1,31 @@
+{
+	"code": 200,
+	"message": "success",
+	"data": {
+		"item":[
+		{
+			"goods_id":"56","sorts":"1","status":"1","goods_name":"\u897f\u74dc\u5377","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160712\/201607129706250259.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"6","sorts":"2","status":"1","goods_name":"\u8292\u679c\u5377","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160622\/201606224443453761.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"17","sorts":"3","status":"1","goods_name":"\u624b\u5de5\u66f2\u5947\u793c\u76d2","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20151128\/201511284694582184.jpg","goods_type":"1","price":"138.00","original_price":"138.00","is_like":0
+		},
+		{
+			"goods_id":"18","sorts":"4","status":"1","goods_name":"\u624b\u5de5\u66f2\u5947mini\u88c5","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20151128\/201511285030127601.jpg","goods_type":"1","price":"28.00","original_price":"28.00","is_like":0
+		},
+		{
+			"goods_id":"54","sorts":"5","status":"1","goods_name":"\u9ed1\u68ee\u6797\u5377","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160615\/201606152304139365.jpg","goods_type":"1","price":"58.00","original_price":"58.00","is_like":0
+		},
+		{
+			"goods_id":"55","sorts":"6","status":"1","goods_name":"\u9ed1\u68ee\u6797\u86cb\u7cd5","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160615\/201606155657045941.jpg","goods_type":"1","price":"248.00","original_price":"248.00","is_like":0
+		},
+		{
+			"goods_id":"51","sorts":"7","status":"1","goods_name":"\u5361\u901a\u4e73\u916a\u6155\u65af-\u53ef\u59ae\u5154","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160525\/201605259849512390.jpg","goods_type":"1","price":"188.00","original_price":"188.00","is_like":0
+		},
+		{
+			"goods_id":"47","sorts":"8","status":"1","goods_name":"\u66b4\u8d70\u7684\u8292\u679c\u86cb\u7cd5","goods_discount":"0","goods_cover":"img.ijuanshi.com\/goods\/20160330\/201603305341314605.jpg","goods_type":"1","price":"268.00","original_price":"268.00","is_like":0
+		}]
+	}
+}

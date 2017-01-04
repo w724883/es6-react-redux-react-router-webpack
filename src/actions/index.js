@@ -22,21 +22,39 @@ export const setPop = (data) => {
     data
   }
 }
-// export const setLoading = (data) => {
-//   return {
-//     type: 'SET_LOADING',
-//     data
-//   }
-// }
+export const setMessage = (data) => {
+  return {
+    type: 'SET_MESSAGE',
+    data
+  }
+}
+export const setLoading = (data) => {
+  return {
+    type: 'SET_LOADING',
+    data
+  }
+}
 export const setCart = (data) => {
-  return { 
+  return {
     type: 'SET_CART',
     data
   }
 }
 export const setOrder = (data) => {
-  return { 
+  return {
     type: 'SET_ORDER',
     data
   }
 }
+// export const setUA = (data) => {
+//   return {
+//     type: 'SET_UA',
+//     data
+//   }
+// }
+// export const setMy = (data) => {
+//   return {
+//     type: 'SET_MY',
+//     data
+//   }
+// }

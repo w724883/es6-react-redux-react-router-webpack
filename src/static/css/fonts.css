@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'juanshi';
-  src:  url('../fonts/juanshi.eot?ki8s5');
-  src:  url('../fonts/juanshi.eot?ki8s5#iefix') format('embedded-opentype'),
-    url('../fonts/juanshi.ttf?ki8s5') format('truetype'),
-    url('../fonts/juanshi.woff?ki8s5') format('woff'),
-    url('../fonts/juanshi.svg?ki8s5#juanshi') format('svg');
+  src: url('../fonts/juanshi.eot?ki8s5');
+  src: url('../fonts/juanshi.eot?ki8s5#iefix') format('embedded-opentype'),
+  url('../fonts/juanshi.ttf?ki8s5') format('truetype'),
+  url('../fonts/juanshi.woff?ki8s5') format('woff'),
+  url('../fonts/juanshi.svg?ki8s5#juanshi') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -105,4 +105,27 @@
 .icon-yelp:before {
   content: "\e91a";
 }
-
+.icon-orders:before {
+  content: "\eb87";
+}
+.icon-coupons:before {
+  content: "\e91b";
+}
+.icon-location:before {
+  content: "\e88b";
+}
+.icon-account-info:before {
+  content: "\e943";
+}
+.icon-messages:before {
+  content: "\ed4f";
+}
+.icon-logout:before {
+  content: "\ecf5";
+}
+.icon-arrows-down:before {
+  content: "\ea6a";
+}
+.icon-menu:before {
+  content: "\e91c";
+}

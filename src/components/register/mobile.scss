@@ -1,0 +1,62 @@
+@import '../../static/css/sassCore/_function.scss';
+.register{
+    padding: 2rem 0 2.625rem;
+}
+.register-list{
+
+    li{
+        overflow: hidden;
+        border-bottom: 1px solid rgba(155,154,155,0.2);
+        
+    }
+}
+.register-item{
+    position: relative;
+    margin: 0 15px;
+    line-height: 50px;
+    label{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 100%;
+        width: 3.75rem;
+        font-size: 0.75rem;
+        color: #CACACA;
+    }
+}
+.register-input,.register-select{
+    padding: 0 0 0 3.75rem;
+    height: 50px;
+    position: relative;
+    input,select{
+        display: block;
+        width: 100%;
+        height: 100%;
+        border:none;
+        outline: none;
+        font-size: 0.75rem;
+        color: #9B9B9B;
+        text-align: right;
+    }
+    select{
+        @include appearance(none);
+    }
+    .verifycode{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+}
+.register-submit{
+    font-size: 0.75rem;
+    color: #fff;
+    background: #C34765;
+    padding: 5px 30px;
+    line-height: normal;
+    border:none;
+    outline: none;
+    display: inline-block;
+    @include border-radius(2px);
+}

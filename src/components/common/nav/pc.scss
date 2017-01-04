@@ -1,0 +1,71 @@
+@import '../../../static/css/sassCore/_function.scss';
+
+.nav-pc{
+	width: 100%;
+ 	height: 74px;
+ 	line-height: 74px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	background: #fff;
+	// padding: 5px 0;
+	// min-width: 1220px;
+	.main{
+		height: 100%;
+		text-align: center;
+	}
+	img{
+		height: 50%;
+		width: auto;
+	}
+	a{
+		font-size: 16px;
+		color: #CACACA;
+		display: inline-block;
+		margin: 0 15px;
+		&.active{
+			color: #809FB5;
+		}
+		i{
+			font-size: 24px;
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 16px 0 0;
+		}
+		span{
+			vertical-align: middle;
+		}
+	}
+}
+.search-enter{
+	display: inline-block;
+	// width: 200px;
+	input{
+		border:none;
+		color: #CACACA;
+		font-size: 16px;
+		width: 100%;
+		padding: 10px;
+		width: 200px;
+		outline: none;
+	}
+}
+.transition-search-enter {
+  	opacity: 0;
+  	// width: 1px;
+  	@include transition(opacity 0.5s ease-in);
+}
+.transition-search-enter.transition-search-enter-active {
+	opacity: 1;
+	// width: 200px;
+}
+.transition-search-leave {
+  	opacity: 1;
+	width: 200px;
+  	@include transition(opacity,width 0.5s ease-in);
+}
+.transition-search-leave.transition-search-leave-active {
+  	opacity: 0.5;
+  	width: 1px;
+}

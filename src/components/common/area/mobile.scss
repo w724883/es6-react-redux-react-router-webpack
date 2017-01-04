@@ -1,0 +1,40 @@
+@import '../../../static/css/sassCore/_function.scss';
+.area{
+    padding: 2rem 0 0;
+    height: 100%;
+    background-color: #fff;
+    @include box-sizing(border-box);
+}
+.area-container{
+    padding: 10px;
+}
+.area-head{
+    padding: 4px 4px 0;
+    border-bottom: 1px solid #C34765;
+    li{
+        display: inline-block;
+        border-top: 1px solid #C34765;
+        border-left: 1px solid #C34765;
+        border-right: 1px solid #C34765;
+        margin: 0 4px -2px;
+        padding: 4px 8px;
+        background: #fff;
+        color: #C34765;
+        @include border-radius(4px 4px 0 0);
+    }
+}
+.area-body{
+    overflow: hidden;
+    padding: 20px 0 0;
+}
+.area-item{
+    float: left;
+    padding: 2px 6px;
+    margin: 0 12px 12px 0;
+    border:1px solid #809FB5;
+    color: #809FB5;
+    @include border-radius(4px);
+}
+
+
+

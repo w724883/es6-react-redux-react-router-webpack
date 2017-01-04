@@ -1,0 +1,113 @@
+@import '../../static/css/sassCore/_function.scss';
+.register{
+    width: 502px;
+}
+.register-header{
+    text-align: center;
+    padding: 30px 0 20px;
+    border-bottom: 1px solid rgba(155,154,155,0.20);
+    p{
+        margin: 20px 0 10px;
+        line-height: normal;
+        font-size: 18px;
+        color: #9B9B9B;
+    }
+    span{
+        font-size: 14px;
+        color: #CACACA;
+    }
+}
+.register-head{
+    width: 3.75rem;
+    height: 3.75rem;
+    line-height: 4rem;
+    text-align: center;
+    overflow: hidden;
+    background-color: #809FB5;
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 auto;
+    @include border-radius(100%);
+
+}
+
+.register-box{
+    width: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    li{
+        position: relative;
+        // height: 47px;
+        // line-height: 47px;
+        text-align: center;
+        margin: 15px 0 -1px;
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            opacity: 0.2;
+            @include gradient-horizontal(transparent 0%,#B3B3B3 50%,#B3B3B3 50%,transparent);
+        }
+    }
+    label{
+        display: block;
+        margin: 0 0 4px;
+        color: #CACACA;
+        height: 100%;
+        font-size: 14px;
+        color: #CACACA;
+        span{
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+        .verifycode{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0;
+        }
+    }
+    input{
+        display: block;
+        width: 100%;
+        border:none;
+        outline: none;
+        height: 100%;
+        font-size: 16px;
+        color: #9B9B9B;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+}
+.register-footer{
+    border-top: 1px solid rgba(155,154,155,0.20);
+    text-align: center;
+    padding: 0 0 30px;
+    p{
+        line-height: normal;
+    }
+    a{
+        font-size: 14px;
+        color: #809FB5;
+        text-decoration: underline;
+        margin: 0 10px;
+    }
+}
+.register-enter{
+    border:none;
+    outline: none;
+    display: inline-block;
+    background: #C34765;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.10);
+    height: 44px;
+    line-height: 44px;
+    border-radius: 44px;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 20px;
+    margin: 20px;
+}

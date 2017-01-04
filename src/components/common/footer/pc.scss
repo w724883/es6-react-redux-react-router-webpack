@@ -1,0 +1,30 @@
+.footer{
+	overflow: hidden;
+	background: #809FB5;
+	line-height: 74px;
+	// padding: 0 15px;
+	min-width: 1220px;
+	text-align: center;
+	a{
+		color: #fff;
+	}
+	span{
+		opacity: 0.5;
+	}
+	.float-left{
+		a{
+			padding: 0 8px;
+			font-size: 14px;
+			
+		}
+	}
+	.float-right{
+		i{
+			font-size: 16px;
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 0 0 20px;
+		}
+	}
+}
+

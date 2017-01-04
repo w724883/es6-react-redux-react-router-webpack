@@ -1,0 +1,89 @@
+@import '../../static/css/sassCore/_function.scss';
+.address{
+	padding: 2rem 0 0;
+}
+.address-list{
+
+	li{
+		border-bottom: 1px solid rgba(155,154,155,0.2);
+		&.active .address-username:after{
+			content: '默认地址';
+			background-color: #C34765;
+		}
+	}
+}
+.address-item{
+	margin: 20px 15px;
+	overflow: hidden;
+	position: relative;
+	line-height: 1.6;
+	a{
+		position: absolute;
+		right: 0;
+		color: #CACACA;
+		font-size: 1rem;
+		padding: 5px 10px;
+	}
+	.icon-close{
+		top: 0;
+	}
+	.icon-edit{
+		bottom: 0;
+	}
+	
+}
+.address-username{
+	font-size: 0.75rem;
+	color: #4A4A4A;
+	padding: 0 2rem 0 0;
+	&:after{
+		content: '设为默认';
+		color: #fff;
+		font-size: 0.5rem;
+		display: inline-block;
+		vertical-align: middle;
+		padding: 0px 8px;
+		height: 14px;
+		line-height: 14px;
+		overflow: hidden;
+		background-color: #CACACA;
+		margin: 0 0 0 5px;
+		@include border-radius(14px);
+	}
+}
+.address-phone{
+	font-size: 0.75rem;
+	color: #9B9B9B;
+}
+.address-location{
+	font-size: 0.625rem;
+	color: #9B9B9B;
+	padding: 0 2rem 0 0;
+}
+.address-add{
+	font-size: 0.75rem;
+	color: #fff;
+	background: #C34765;
+	padding: 5px 30px;
+	line-height: normal;
+	border:none;
+	outline: none;
+	display: inline-block;
+	@include border-radius(2px);
+}
+
+.transition-address-enter {
+	@include translate3D(0,100%,0);
+	@include transition(transform 400ms ease-in);
+}
+.transition-address-enter.transition-address-enter-active {
+	@include translate3D(0,0,0);
+}
+.transition-address-leave {
+	@include translate3D(0,0,0);
+	@include transition(transform 400ms ease-in);
+}
+.transition-address-leave.transition-address-leave-active {
+	@include translate3D(0,100%,0);
+}	
+

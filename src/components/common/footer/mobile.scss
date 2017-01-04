@@ -1,0 +1,29 @@
+@import '../../../static/css/sassCore/_function.scss';
+.footer{
+	overflow: hidden;
+	background: #809FB5;
+	line-height: 40px;
+	padding: 0 15px;
+}
+.footer-left{
+	float: left;
+
+	// opacity: 0.5;
+	// font-size: 0.625rem;
+	display: inline-block;
+	color: #fff;
+	width: 2rem;
+	height: 2rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	@include background-size(contain);
+
+}
+.footer-right{
+	float: right;
+	a{
+		padding: 0 5px;
+		font-size: 0.625rem;
+		color: #fff;
+	}
+}

@@ -4,57 +4,129 @@ import { connect } from 'react-redux';
 // import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import Config from '../../config';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import Layer from '../layer';
-import {Loading} from '../loading';
-import Nav from '../nav/mobile';
+// import CSSTransitionGroup from 'react-addons-css-transition-group';
+// import Layer from '../layer';
+// import {Loading} from '../loading';
+import Nav from '../common/nav/mobile';
 import Masonry from "react-masonry-component";
-import TopFixed from '../fixed/topFixed';
+import {TopFixed} from '../common/fixed/mobile';
+import Scroll from '../common/scroll/mobile';
 import * as Actions from '../../actions';
+import 'zepto';
 import "./mobile.scss";
 
 
 class Show extends Component{
 	constructor(props){
 		super(props);
+		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
-			loading:true
+			page:1
 		}
 	}
-	getShowData(){
-		let params = {};
-		let seft = this;
-		let dfd = $.Deferred();
-		$.get(Config.api.bask,params,function(res){
-			if(res.code == 200){
-				seft.setState({
-					data:res.data
-				})
-			}else{
-				console.log(res.message);
-			}
-		}).fail(function(error){
-			console.log(error)
-		}).always(function(){
-			dfd.resolve();
+	initShowData(){
+		let self = this;
+		let dfd = new $.Deferred();
+		$.ajax({
+		  type: 'POST',
+		  url: Config.api.bask,
+		  data:{
+		  	page:this.state.page
+		  },
+		  dataType: Config.dataType,
+		  success: function(res){
+		  	if(res.code == 200){
+	  			self.setState({
+	  				data:res.data,
+	  				page:self.state.page+1
+	  			});
+
+		  	}else{
+		  		self.props.dispatch(Actions.setMessage({
+		  			text:res.message
+		  		}));
+		  	}
+		  },
+		  error: function(xhr, type){
+		     self.props.dispatch(Actions.setMessage({
+		    	text:Config.text.network
+		    }));
+		  },
+		  complete:function(){
+		  	dfd.resolve();
+		  }
 		});
 		return dfd.promise();
 	}
+	getAppreciate(n){
+		let text = '';
+		n = parseInt(n, 10);
+		// let stars = new Array(n).fill(1);
+		switch(n){
+			case 1:text = '很差';break;
+			case 2:text = '不好';break;
+			case 3:text = '一般';break;
+			case 4:text = '很好';break;
+			case 5:text = '非常好';break;
+		}
+		return text;
+		// return {
+		// 	text,
+		// 	star:stars.map((v,k) => (
+		// 		<i key={k} className="icon-appreciate"></i>
+		// 	))
+		// }
+	}
+	getShowData(){
+		let self = this;
+		$.ajax({
+		  type: 'POST',
+		  url: Config.api.bask,
+		  data:{
+		  	page:this.state.page
+		  },
+		  dataType: Config.dataType,
+		  success: function(res){
+		  	if(res.code == 200){
+		  		let data = self.state.data;
+	  			self.setState({
+	  				data:data.concat(res.data),
+	  				page:self.state.page+1
+	  			});
+
+
+		  	}else if(res.code == 403){
+		  		self.setState({
+		  			page:0
+		  		});
+		  	}else{
+		  		self.props.dispatch(Actions.setMessage({
+		  			text:res.message
+		  		}));
+		  	}
+		  },
+		  error: function(xhr, type){
+		     self.props.dispatch(Actions.setMessage({
+		    	text:Config.text.network
+		    }));
+		  }
+		});
+	}
+	handleScroll(){
+		this.getShowData();
+	}
 	componentWillMount(){
 		let self = this;
-		// let {dispatch} = this.props;
-		var dfdTasks = [];
-		dfdTasks.push(this.getShowData());
+		let {dispatch} = this.props;
+		let dfdTasks = [this.initShowData.call(this)];
 		$.when.apply(null,dfdTasks).done(function(){
-			// dispatch(Actions.setLoading(false));
-			self.setState({
-				loading:false
-			})
+			dispatch(Actions.setLoading(false));
 		});
 
-		
-		
+
+
 	}
 	// componentDidMount(){
 	// 	// console.log(Masonry)
@@ -66,33 +138,9 @@ class Show extends Component{
 	// 		itemSelector: "li"
 	// 	});
 	// }
-	
+
 	render(){
-		let data = '';
-		if(this.state.data.length){
-			data = this.state.data.map((value,key) => (
-				<li key={key} className="J-item">
-					<div className="show-item">
-						<div className="show-img">
-							<a href="/">
-								<img src={value.goods_cover} />
-							</a>
-						</div>
-						<div className="show-about">
-							<p>{value.goods_name}</p>
-							<div className="show-info">
-								<div className="show-userhead"></div>
-								<div className="username">
-									<strong>赵晓雯</strong>
-									<span>28人点赞</span>
-								</div>
-								<a href="" className="vertical-middle"><i className="icon-appreciate"></i></a>
-							</div>
-						</div>
-					</div>
-				</li>
-			))
-		}
+
 		return (
 			<div className="show">
 				<TopFixed data="顾客晒单" />
@@ -104,18 +152,35 @@ class Show extends Component{
 		                updateOnEachImageLoad={false}
 		            >
 					{
-						data
+						this.state.data.length ? (
+							this.state.data.map((value,key) => {
+								return <li key={key} className="J-item">
+									<div className="show-item">
+										<div className="show-img">
+											<Link to={"/details?id="+value.goods_id}>
+												<img src={value.comment_img} />
+											</Link>
+										</div>
+										<div className="show-about">
+											<p>{value.contents}</p>
+											<div className="show-info">
+												<div className="show-userhead" style={{backgroundImage:'url('+value.face+')'}}></div>
+												<div className="username">
+													<strong>{value.username}</strong>
+													<span>{value.comment_num}星评价</span>
+												</div>
+												<a href="javascript:;"><i className="icon-appreciate"></i><span>{this.getAppreciate(value.comment_num)}</span></a>
+											</div>
+										</div>
+									</div>
+								</li>
+							})
+						) : null
 					}
 					</Masonry>
 				</div>
-				<Nav />
-				<CSSTransitionGroup
-					component="div"
-					transitionEnter={false}
-	              	transitionLeaveTimeout={400}
-	              	transitionName="transition-layer">
-						{this.state.loading ? <Layer><Loading /></Layer> : null}
-				</CSSTransitionGroup>
+				<Nav state={this.props.state} dispatch={this.props.dispatch} />
+				<Scroll page={this.state.page} handleScroll={this.handleScroll.bind(this)} />
 			</div>
 		)
 	}

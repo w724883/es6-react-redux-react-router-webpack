@@ -2,11 +2,13 @@
 
 .personal{
 	background: #eee;
-	padding: 10px 0;
+}
+.personal-header{
+	padding: 10px 0 0;
 }
 .personal-head{
-	width: 60px;
-	height: 60px;
+	width: 3.75rem;
+	height: 3.75rem;
 	margin: 15px auto;
 	overflow: hidden;
 	box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
@@ -18,7 +20,7 @@
 	@include border-radius(100%);
 }
 .personal-username{
-	font-size: 14px;
+	font-size: 0.875rem;
 	color: #4A4A4A;
 	text-align: center;
 	margin: 0 0 25px;
@@ -28,4 +30,88 @@
 	height: 1px;
 	opacity: 0.5;
 	@include gradient-horizontal(transparent 0%,#B3B3B3 30%,#B3B3B3 70%,transparent 100%);
+}
+.personal-account{
+	color: #CACACA;
+	font-size: 0.625rem;
+	text-align: center;
+	li{
+		display: inline-block;
+		vertical-align: middle;
+		margin: 15px 10px;
+	}
+	i{
+		font-size: 1rem;
+		vertical-align: middle;
+		margin: 0 10px 0 0;
+	}
+	span{
+		display: inline-block;
+		vertical-align: middle;
+		text-align: left;
+	}
+	strong{
+		font-size: 0.75rem;
+		font-weight: normal;
+		color: #809FB5;
+	}
+	.personal-account-line{
+		width: 1px;
+		height: 25px;
+		background: rgba(155,154,155,0.2);
+	}
+}
+.personal-list{
+	background: #fff;
+	padding: 0 0 2.875rem;
+
+}
+.personal-items{
+	border-bottom: 1px solid rgba(155,154,155,0.2);
+
+	background: #fff;
+	a{
+		display: block;
+		border-top: 1px solid rgba(155,154,155,0.2);
+		// border-bottom: 1px solid rgba(155,154,155,0.2);
+		padding: 20px 15px;
+		overflow: hidden;
+		font-size: 0.75rem;
+		color: #9B9B9B;
+		margin: 0 0 -1px 0;
+		span{
+			margin: 0 0 0 10px;
+			vertical-align: middle;
+		}
+		i{
+			font-size: 1rem;
+			opacity: 0.5;
+			vertical-align: middle;
+		}
+		&.active{
+			color: #C34765;
+		}
+	}
+}
+.personal-items-right{
+	float: right;
+}
+
+
+.personal-nav{
+	li{
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 0.625rem;
+		color: #CACACA;
+		padding: 0 6px;
+		height: 20px;
+		line-height: 20px;
+		@include border-radius(20px);
+		&.active{
+			background: #809FB5;
+			color: #fff;
+			@include background-clip(padding-box);
+		}
+	}
 }

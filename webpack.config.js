@@ -15,26 +15,30 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 是否开启调试功能，上线需设为false
 var DEBUG = process.env.DEBUG;
+var M = process.env.M;
 DEBUG = DEBUG == '0' ? 0 : 1;
+M = M == '0' ? 0 : 1;
+
+var outputPath = (M ? '/m' : '/pc');
 var config = {
   //页面入口文件配置
   entry: {
       // 线下测试数据，上线需去掉
       // bnjs:['./mockup/bnjs.js'],
       // zepto:['./components/zepto/zepto.js'],
-      mobile : [
+      // mobile : [
           // 'webpack-dev-server/client?http://m.ijuanshi.com/',
           // 'webpack/hot/only-dev-server',
           // 'webpack-hot-middleware/client',
-          './src/mobile.js'
-      ],
-      pc:[
-        './src/pc.js'
-      ]
+          // './src/mobile.js'
+      // ],
+      // pc:[
+        // './src/pc.js'
+      // ]
   },
   //入口文件输出配置
   output: {
-      path:path.join(__dirname, DEBUG?'output':'../ijuanshi/public/frontend'),
+      path:path.join(__dirname, DEBUG?'output'+outputPath:'../ijuanshi/public/frontend'),
       filename: 'js/[name].js',
   },
   // 插件项
@@ -45,18 +49,18 @@ var config = {
       //     minChunks: 2
       // }),
       new HtmlWebpackPlugin({
-          filename: 'index.html',
+          filename: (M ? '../../application/views/frontend/init/index.php' : '../../application/views/frontend/init/pc.php'),
           inject: 'body',
-          chunks:['mobile'],
-          template: './src/html/mobile.html',
+          chunks:[(M ? 'mobile' : 'pc')],
+          template: (M ? './src/html/mobile.html' : './src/html/pc.html'),
           chunksSortMode:'dependency',
           hash:true,
       }),
       new HtmlWebpackPlugin({
-          filename: 'pc.html',
+          filename: 'receive.html',
           inject: 'body',
-          chunks:['pc'],
-          template: './src/html/pc.html',
+          chunks:['receive'],
+          template: './src/html/receive.html',
           chunksSortMode:'dependency',
           hash:true,
       }),
@@ -109,9 +113,8 @@ var config = {
           // },
           {
               test: /\.js[x]?$/,
-              exclude:/node_modules/,
               loaders: ['jsx-loader','babel-loader?presets[]=react,presets[]=es2015'],
-              exclude: /node_modules/,
+              exclude:/node_modules/
               // query: {
               //   presets: ['react','es2015']
               // }
@@ -124,7 +127,7 @@ var config = {
           },
           {
               test: /\.(jpe?g|png|gif|eot|ttf|woff|svg)/i,
-              loader: 'url-loader?limit=5120&name=static/[name].[ext]'
+              loader: 'url-loader?limit=5120&name=/static/[name].[ext]'
           },
           {
               test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
@@ -146,46 +149,69 @@ var config = {
       extensions: ['', '.js', '.jsx', '.json', '.scss'],
       alias:{
           "zepto":(DEBUG ? path.join(__dirname, "src/libs/zepto/zepto.js") : path.join(__dirname, "src/libs/zepto/zepto.min.js")),
+          // "lazyload":path.join(__dirname, "src/libs/lazyload/lazyload.js"),
+          "cookie":(DEBUG ? path.join(__dirname, "src/libs/zepto/zepto.cookie.js") : path.join(__dirname, "src/libs/zepto/zepto.cookie.min.js")),
           "swiper":(DEBUG ? path.join(__dirname, "src/libs/swiper/swiper.jquery.js") : path.join(__dirname, "src/libs/swiper/swiper.jquery.min.js")),
-          // "react":(DEBUG ? path.join(__dirname, "components/react/react.js") : path.join(__dirname, "components/react/react.min.js")),
           // "react-dom":(DEBUG ? path.join(__dirname, "components/react/react-dom.js") : path.join(__dirname, "components/react/react-dom.min.js")),
           // "iscroll":path.join(__dirname, "components/iscroll/iscroll.js")
       }
   }
 };
+if(M){
+  config.entry.mobile = [
+    './src/mobile.js'
+  ];
+  config.entry.receive = [
+    './src/components/receive/index.js'
+  ];
+}else{
+  config.entry.pc = [
+    './src/pc.js'
+  ]
+}
+
 
 if(DEBUG){
     // config.entry.bnjs = ['./mockup/bnjs.js'];
-    config.devtool = 'cheap-module-eval-source-map';
     //将test文件copy到output
     config.plugins.push(new CopyWebpackPlugin([
         { from: './src/test',to:'./test' }
     ]));
     config.plugins.push(new webpack.DefinePlugin({
-      DEBUG:DEBUG
+      DEBUG:DEBUG,
+
     }));
 
+
+
     // 配置静态资源引入路径
-    config.output.publicPath = 'http://m.ijuanshi.com/';
+    config.output.publicPath = M ? 'http://m.ijuanshi.com/' : 'http://www.ijuanshi.com/';
     // config.plugins.push(new OpenBrowserPlugin({ url: 'http://localhost:3000' }));
-    
+
 }else{
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false // Suppress uglification warnings
-        }
-    }));
+    // config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    //     compress: {
+    //         warnings: false
+    //     },
+    //     output: {
+    //       comments: false
+    //     }
+    // }));
+    // config.plugins.push(new CopyWebpackPlugin([
+    //     { from: './src/test',to:'./test' }
+    // ]));
     config.plugins.push(new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
       },
-      DEBUG:DEBUG
-    }));
-    
-    // 配置静态资源引入路径
-    config.output.publicPath = 'http://www.cake.com/';
+      DEBUG:DEBUG,
 
-    
-    
+    }));
+
+    // 配置静态资源引入路径
+    config.output.publicPath = '/public/frontend';
+
+
+
 }
 module.exports = config;

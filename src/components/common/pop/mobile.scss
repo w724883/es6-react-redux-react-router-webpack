@@ -1,0 +1,143 @@
+@import '../../../static/css/sassCore/_function.scss';
+.cartJoin{
+	text-align: center;
+	padding: 26px 0;
+	width: 290px;
+
+	.pop-confirm{
+		height: 36px;
+		line-height: 36px;
+		background: #C34765;
+		font-size: 0.75rem;
+		color: #fff;
+		padding: 0 15px;
+		display: inline-block;
+		@include box-shadow(0px 1px 5px 0px rgba(0,0,0,0.1));
+		@include border-radius(18px);
+		i{
+			font-size: 1rem;
+			margin: 0 10px 0 0;
+		}
+	}
+	.pop-cancle{
+		font-size: 0.75rem;
+		color: #809FB5;
+		text-decoration: underline;
+	}
+}
+.cartJoin-title{
+	p{
+		font-size: 0.75rem;
+		color: #CACACA;
+		margin: 10px 0 15px;
+	}
+}
+.cartJoin-enter{
+	margin: 0 0 20px;
+}
+.cartJoin-head{
+	width: 3.75rem;
+	height: 3.75rem;
+	margin: 0 auto;
+	overflow: hidden;
+	background: #F5F5F5;
+	border: 1px solid #809FB5;
+	background-repeat: no-repeat;
+	background-position: center;
+	@include background-size(cover);
+	@include background-clip(padding-box);
+	@include border-radius(100%);
+}
+
+
+.cartModify{
+	@extend .cartJoin;
+	ul{
+		margin: 20px 10px;
+		border-top: 1px solid rgba(155,154,155,0.20);
+		border-bottom: 1px solid rgba(155,154,155,0.20);
+	}
+	li{
+		white-space: nowrap;
+		text-align: left;
+		margin: 20px 0;
+		position: relative;
+	    padding: 0 82px 0 3.125rem;
+	}
+}
+.cartModify-title{
+	@extend .cartJoin-title;
+	font-size: 0.625rem;
+	color: #CACACA;
+	p{
+		color: #9B9B9B;
+		margin: 10px 0;
+	}
+}
+.cartModify-head{
+	@extend .cartJoin-head;
+	background-color: #CACACA;
+	line-height: 3.75rem;
+	border: none;
+	font-size: 1rem;
+	color: #fff;
+}
+
+.cartModify-enter{
+	@extend .cartJoin-enter;
+	i{
+		font-size: 0.8125rem;
+		vertical-align: middle;
+	}
+}
+
+
+// .cartAdd{
+// 	@extend .cartModify;
+// }
+// .cartAdd-title{
+// 	@extend .cartModify-title;
+// }
+// .cartAdd-head{
+// 	@extend .cartModify-head;
+
+// 	background-color: #F5F5F5;
+// 	border: 1px solid #C34765;
+// }
+// .cartAdd-enter{
+// 	@extend .cartModify-enter;
+// 	font-size: 1rem;
+// }
+
+.pop-recommend{
+	.pop-bg{
+		background-color: #809FB5;
+		opacity: 0.51;
+	}
+	.pop-close{
+		font-size: 24px;
+		color: #fff;
+	}
+}
+.recommend{
+	width: 290px;
+	background: #fff;
+	border: 1px solid rgba(202,202,202,0.3);
+	@include box-shadow(0 3px 15px 0 rgba(0,0,0,0.2));
+	@include border-radius(3px);
+}
+.recommend-head{
+	padding-top: 160px;
+	background-repeat: no-repeat;
+	background-position: center;
+	@include background-size(cover);
+}
+.recommend-content{
+	font-size: 0.75rem;
+	color: #809FB5;
+	max-height: 170px;
+	overflow: hidden;
+	padding: 10px 15px;
+	word-break:break-word;
+	line-height: 1.5;
+}

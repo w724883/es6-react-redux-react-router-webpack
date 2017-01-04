@@ -1,0 +1,67 @@
+@import '../../static/css/sassCore/_function.scss';
+
+.notify{
+	width: 500px;
+	height: 100%;
+	min-height: 400px;
+	overflow: hidden;
+	.swiper-container{
+		height: 100%;
+		width: 100%;
+		
+	}
+}
+.notify-list{
+	overflow: hidden;
+	padding: 74px 0 0;
+	height: auto;
+}
+.notify-item{
+	padding: 30px;
+	border-bottom: 1px solid rgba(155,154,155,0.2);
+	line-height: 1.8;
+}
+.notify-item-title{
+	position: relative;
+	padding: 0 150px 10px 0;
+	white-space: nowrap;
+	p{
+		font-size: 18px;
+		color: #4A4A4A;
+		// padding: 0 30px 0 0;
+		max-width: 80%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		// position: relative;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	em{
+		font-size: 10px;
+		color: #fff;
+		// position: absolute;
+		// top: 0;
+		// right: 0;
+		padding: 0 10px;
+		height: 20px;
+		line-height: 20px;
+		background: #7B8E3D;
+		font-style: normal;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0 10px;
+		@include border-radius(20px);
+	}
+	span{
+		font-size: 14px;
+		color: #CACACA;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+}
+.notify-item-desc{
+	font-size: 14px;
+	color: #9B9B9B;
+}

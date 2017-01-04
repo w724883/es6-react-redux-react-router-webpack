@@ -1,28 +1,47 @@
 @import '../../static/css/sassCore/_function.scss';
 .show{
-	padding: 30px 0 32px;
+	padding: 74px 0 0;
 }
-.show-top{
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	text-align: center;
-	width: 100%;
-	height: 30px;
-	line-height: 30px;
-	font-size: 10px;
-	color: #9B9B9B;
-	background-image: linear-gradient(-180deg, #FBFBFB 0%, #F5F5F5 100%);
-	border-bottom: 1px solid #CACACA;
-}
+// .show-top{
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	z-index: 10;
+// 	text-align: center;
+// 	width: 100%;
+// 	height: 30px;
+// 	line-height: 30px;
+// 	font-size: 10px;
+// 	color: #9B9B9B;
+// 	background-image: linear-gradient(-180deg, #FBFBFB 0%, #F5F5F5 100%);
+// 	border-bottom: 1px solid #CACACA;
+// }
 .show-content{
 	padding: 20px 10px;
 }
-
+.show-nav{
+	text-align: center;
+	background-color: #F5F5F5;
+	padding: 50px 0;
+	h2{
+		font-size: 26px;
+		color: #4A4A4A;
+	}
+	p{
+		font-size: 14px;
+		color: #CACACA;
+		margin: 30px 0 15px;
+	}
+	a{
+		font-size: 16px;
+		color: #CACACA;
+		margin: 0 10px;
+	}
+}
 .show-items{
+	margin: 50px 0 0;
 	li{
-		width: 50%;
+		width: 25%;
 		float: left;
 	}
 }
@@ -33,7 +52,8 @@
 }
 .show-img{
 	background: #F5F5F5;
-	border-bottom: 1px solid #eee;
+	// border-bottom: 1px solid #eee;
+	margin: -1px;
 	border-radius: 3px 3px 0px 0px;
 	a{
 		display: block;
@@ -48,9 +68,8 @@
 .show-about{
 	padding: 6px 5px 10px;
 	p{
-		font-size: 10px;
+		font-size: 16px;
 		color: #9B9B9B;
-
 	}
 }
 .show-info{
@@ -58,18 +77,25 @@
 	margin: 10px 0 0;
 	position: relative;
 	a{
-		color: #FBAE1E;
-		font-size: 14px;
+		color: #cacaca;
+		font-size: 10px;
 		position: absolute;
 		top: 0;
 		right: 0;
 		height: 100%;
+		text-align: center;
+		i{
+			color: #C34765;
+			font-size: 20px;
+			display: block;
+			margin: 0 0 2px 0;
+		}
 	}
 }
 .show-userhead{
 	float: left;
-	width: 20px;
-	height: 20px;
+	width: 40px;
+	height: 40px;
 	margin: 0 5px 0 0;
 	background-color: #eee;
 	overflow: hidden;
@@ -81,12 +107,13 @@
 .username{
 	float: left;
 	overflow: hidden;
-	font-size: 8px;
+	font-size: 14px;
 	strong{
 		display: block;
 		color: #4A4A4A;
 	}
 	span{
 		color: #CACACA;
+		font-size: 10px;
 	}
 }

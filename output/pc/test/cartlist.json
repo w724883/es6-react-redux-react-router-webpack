@@ -1,0 +1,33 @@
+{
+	"code":200,
+	"message":"success",
+	"data":{
+		"list":[{
+			"checked":true,
+			"num":1,
+			"flavor":"芒果",
+			"size":"2斤"
+		},{
+			"checked":true,
+			"num":2,
+			"flavor":"芒果",
+			"size":"2斤"
+		},{
+			"checked":true,
+			"num":3,
+			"flavor":"芒果",
+			"size":"2斤"
+		}],
+		"add":[{
+			"checked":true,
+			"num":1,
+			"flavor":"芒果",
+			"size":"2斤"
+		},{
+			"checked":true,
+			"num":2,
+			"flavor":"芒果",
+			"size":"2斤"
+		}]
+	}
+}

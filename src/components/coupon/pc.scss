@@ -1,0 +1,16 @@
+@import '../../static/css/sassCore/_function.scss';
+
+.coupon{
+    
+    width: 450px;
+    height: 100%;
+    min-height: 400px;
+    // position: relative;
+}
+.coupon-list{
+    padding: 74px 0 0;
+    height: auto;
+    li{
+        margin: 10px 0;
+    }
+}

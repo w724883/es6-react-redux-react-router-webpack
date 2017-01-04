@@ -1,0 +1,186 @@
+@import '../../static/css/sassCore/_function.scss';
+body,div,p,span,em{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+em{
+    font-style: normal;
+}
+a{
+    text-decoration: none;
+}
+.receive{
+    height: 100%;
+    min-height: 100%;
+    background: url(../../static/imgs/receive.png) center;
+    @include background-size(150px);
+}
+.receive-container{
+    min-height: 100%;
+    @include gradient-radial(250% 700px ellipse at top center, transparent 30%, transparent 30%, #809FB5 30%);
+}
+.receive-logo{
+    padding: 10% 0;
+    a{
+        display: block;
+        width: 80px;
+        padding-top: 45px;
+        margin: 0 auto;
+        background-image: url(../../static/imgs/logo.png);
+        background-repeat: no-repeat;
+        @include background-size(contain);
+    }
+    
+}
+.receive-content{
+    width: 180px;
+    margin: 0 auto;
+    
+}
+.receive-about{
+    overflow: hidden;
+    @include box-shadow(0px 3px 10px 1px rgba(0,0,0,0.2));
+    @include border-radius(4px);
+}
+.receive-code{
+    background: #fff;
+    position: relative;
+    p{
+        opacity: 0.5;
+        font-size: 0.625rem;
+        color: #CACACA;
+        padding: 0 15px 15px;
+        text-align: center;
+    }
+    &:after{
+        content: '';
+        height: 8px;
+        background-image: url(../../static/imgs/dot.png);
+        background-repeat: repeat-x;
+        background-position: -4px 0;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: -4px;
+    }
+}
+.receive-code-img{
+    padding: 15px;
+   img{
+       width: 100%;
+       
+   } 
+}
+.receive-info{
+    background: #fff;
+    margin: 1px 0 0;
+    padding: 15px;
+    overflow: hidden;
+    span{
+        font-size: 0.875rem;
+        color: #809FB5;
+    }
+    em{
+        background: #809FB5;
+        font-size: 0.625rem;
+        color: #fff;
+        display: inline-block;
+        padding: 2px 4px;
+        float: right;
+        @include border-radius(2px);
+    }
+    p{
+        font-size: 0.75rem;
+        color: #CACACA;
+        margin: 8px 0 0;
+    }
+}
+.receive-desc{
+    padding: 0 30px 40px;
+    margin: 20px 0;
+    text-align: center;
+    line-height: 1.6;
+    span{
+        font-size: 0.625rem;
+        color: #fff;
+    }
+    p{
+        opacity: 0.5;
+        font-size: 0.625rem;
+        color: #fff;
+        margin: 10px 0 0;
+        text-align: left;
+    }
+}
+.receive-btn{
+    // position: fixed;
+    // left: 0;
+    // bottom: 0;
+    // width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 20px 0 0;
+    // background: #809FB5;
+    // @include box-shadow(0px -2px 10px 0px rgba(0,0,0,0.1));
+    a{
+        background: #fff;
+        display: inline-block;
+        line-height: normal;
+        padding: 6px 24px;
+        font-size: 0.75rem;
+        color: #809FB5;
+        @include border-radius(2px);
+    }
+}
+// .receive-link{
+//     display: block;
+//     text-decoration: line-through;
+//     color: #fff;
+//     font-size: 0.75rem;
+//     text-align: center;
+// }
+.receive-link{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    // padding: 20px 0 0;
+    background: #809FB5;
+    @include box-shadow(0px -2px 10px 0px rgba(0,0,0,0.1));
+    a{
+        background: #fff;
+        display: inline-block;
+        line-height: normal;
+        padding: 6px 24px;
+        font-size: 0.75rem;
+        color: #809FB5;
+        @include border-radius(2px);
+    }
+}
+@media only screen and (min-width: 768px){
+    .receive-container{
+        @include gradient-radial(250% 700px ellipse at top center, transparent 30%, rgb(123,142,61) 30%);
+        @include gradient-vertical(transparent 30%, #809FB5 30%);
+    }
+    .receive-logo{
+        padding: 2.5% 0;
+    }
+    .receive-content {
+        width: 260px;
+    }
+    .receive-desc{
+        padding: 20px 0 0;
+        width: 440px;
+        margin: 0 auto;
+    }
+    .receive-btn{
+        display: none;
+    }
+}

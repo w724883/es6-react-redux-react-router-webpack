@@ -1,0 +1,17 @@
+@import '../../../static/css/sassCore/_function.scss';
+.verifycode{
+    &.verifycode-disable{
+        opacity: 0.8;
+    }
+    a{
+        display: inline-block;
+        color: #fff;
+        background: #CACACA;
+        height: 18px;
+        line-height: 16px;
+        overflow: hidden;
+        padding: 0 10px;
+        @include border-radius(18px);
+        font-size: 10px;
+    }
+}

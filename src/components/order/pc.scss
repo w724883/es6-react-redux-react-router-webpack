@@ -1,0 +1,303 @@
+@import '../../static/css/sassCore/_function.scss';
+.order{
+    background: #fff;
+    border: 1px solid rgba(155,154,155,0.2);
+    @include box-shadow(0 2px 20px 1px rgba(0,0,0,0.05));
+    @include border-radius(5px);
+}
+.order-item{
+    overflow: hidden;
+    .hide{
+        display: none;
+    }
+    &.active{
+        .order-title{
+            color: #4A4A4A;
+        }
+        .order-box{
+            display: block;
+        }
+    }
+}
+.order-header{
+    padding: 22px 0;
+    margin: -1px 15px 0;
+    border-top: 1px solid rgba(155,154,155,0.2);
+    font-size: 16px;
+    color: #CACACA;
+    overflow: hidden;
+    cursor: pointer;
+}
+.order-title{
+    color: #9B9B9B;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.order-title-desc{
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    // width: 40%;
+}
+.order-header-right{
+    float: right;
+    .icon-add{
+        font-size: 16px;
+    }
+}
+.order-box{
+    display: none;
+    border-bottom: 1px solid rgba(155,154,155,0.20);
+}
+.order-goods{
+    margin: 10px 15px;
+    padding: 0 30px 0 0;
+    position: relative;
+}
+.order-calendar{
+    .order-box{
+        padding: 20px 0 0;
+    }
+    .mbsc-mobiscroll .dwwr{
+        background: #fff;
+        color: #809FB5;
+        font-size: 16px;
+        .dw-cal-day-diff{
+            color: #454545;
+        }
+        .dw-cal-btnw{
+            color: #9B9B9B;
+        }
+        .dw-cal-btn-txt{
+            color: #CACACA;
+        }
+        .dw-cal-days{
+            color: #CACACA;
+            border: none;
+        }
+        .dw-cal-day{
+            .dw-i{
+                width: 26px;
+                height:26px;
+                line-height: 18px;
+            }
+            &.dw-sel .dw-i{
+                background: #C34765;
+                overflow: hidden;
+                @include border-radius(100%);
+            }
+        }
+        .dw-cal .dw-sel .dw-i{
+            background: #C34765;
+        }
+        .dw-cal-today{
+            color: #C34765;
+        }
+    }
+}
+.order-distribution{
+    .order-box{
+        padding: 0 15px 15px;
+    }
+    .checkbox{
+        margin: 0 10px 0 0;
+    }
+    .active{
+        color: #C34765;
+    }
+    label{
+        display: block;
+        overflow: hidden;
+        font-size: 14px;
+        color: #9B9B9B;;
+        margin: 15px 0;
+        cursor: pointer;
+    }
+    .order-header-right{
+        font-size: 12px;
+        line-height: 26px;
+    }
+    ul{
+        overflow: hidden;
+        padding: 0 0 0 26px;
+    }
+    li{
+        float: left;
+        width: 92px;
+        height: 24px;
+        line-height: 24px;
+        border: 1px solid #CACACA;
+        font-size: 14px;
+        color: #CACACA;
+        text-align: center;
+        margin: 0 5px 5px 0;
+        cursor: pointer;
+        @include border-radius(2px);
+        &.active{
+            border: 1px solid #809FB5;
+            color: #fff;
+            background-color: #809FB5;
+        }
+    }
+}
+.order-distribution-right{
+    float: right;
+}
+.order-address{
+    font-size: 14px;
+    color: #CACACA;
+    overflow: hidden;
+    padding: 0 0 0 26px;
+    margin: 15px 0 0;
+    span{
+        color: #C34765;
+        vertical-align: middle;
+    }
+    a{
+        color: #C34765;
+        float: right;
+    }
+    p{
+        line-height: 1.3;
+        margin: 0 0 10px 0;
+    }
+}
+
+
+.order-discount{
+    input[disabled] + .checked{
+        opacity: 0.4;
+    }
+    .order-box{
+        padding: 0 15px;
+    }
+    .checkbox{
+        margin: 0 10px 0 0;
+    }
+    .order-discount-label{
+        display: block;
+        overflow: hidden;
+        font-size: 14px;
+        color: #9B9B9B;;
+        margin: 15px 0;
+    }
+    .order-discount-right{
+        float: right;
+    }
+}
+
+.order-coupon{
+    label{
+        position: relative;
+        display: block;
+        padding: 0 0 0 26px;
+        margin: 10px 0;
+    }
+    .vertical-middle{
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+// .order-coupon-red{
+//  color: #F81CF6;
+//  .order-coupon-about{
+//      background: #F81CF6;
+//  }
+// }
+// .order-coupon-blue{
+//  color: #1CCBF8;
+//  .order-coupon-about{
+//      background: #1CCBF8;
+//  }
+// }
+.order-coupon-list{
+    background: #fff;
+    border: 1px solid rgba(202,202,202,0.30);
+    padding: 5px 100px 5px 5px;
+    position: relative;
+}
+.order-coupon-about{
+    width: 150px;
+    padding: 10px;
+    position: relative;
+    &:after{
+        content:'';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: -1px;
+        width: 5px;
+        height: 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+        background-image: url(../../static/imgs/radius.png);
+        @include background-size(contain);
+
+    }
+    strong{
+        font-size: 0.75rem;
+        color: #fff;
+        font-weight: normal;
+        margin: 0 10px 0 0;
+        // display: inline-block;
+        // vertical-align: middle;
+        // max-width: 100px;
+    }
+    span{
+        display: inline-block;
+        font-size: 0.5rem;
+        padding: 1px 5px;
+        background: #fff;
+        vertical-align: middle;
+        @include border-radius(2px);
+    }
+    p{
+        opacity: 0.5;
+        font-size: 0.75rem;
+        color: #fff;
+        margin: 10px 0 0;
+    }
+}
+.order-coupon-info{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 100%;
+    text-align: center;
+    p{
+        font-size: 0.875rem;
+        color: #808080;
+        margin: 15px 0 8px;
+        white-space: nowrap;
+    }
+    span{
+        font-size: 0.625rem;
+    }
+}
+.order-remark{
+    .order-box{
+        padding: 15px;
+    }
+    textarea{
+        display: block;
+        width: 100%;
+        height: 240px;
+        background: #fff;
+        border: 1px solid rgba(155,154,155,0.20);
+        font-size: 14px;
+        color: #CACACA;
+        padding: 10px;
+        resize: none;
+        outline: none;
+        @include box-sizing(border-box);
+    }
+}

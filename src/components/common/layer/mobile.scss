@@ -1,0 +1,27 @@
+@import '../../../static/css/sassCore/_function.scss';
+.layer{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 11;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+// .transition-layer-enter {
+//   	opacity: 0.01;
+//   	@include transition(opacity 0.44s ease-in);
+// }
+// .transition-layer-enter.transition-layer-enter-active {
+//   	opacity: 1;
+// }	
+.transition-layer-leave {
+  	opacity: 1;
+  	@include transition(opacity 0.4s ease-in);
+}
+.transition-layer-leave.transition-layer-leave-active {
+  	opacity: 0.01;
+}
