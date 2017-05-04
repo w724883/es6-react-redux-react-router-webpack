@@ -10,7 +10,7 @@ import "./mobile.scss";
 class Comment extends React.Component {
     constructor(props){
         super();
-        props.dispatch(Actions.setLoading(true));
+        
         this.state = {
             data:{},
             score : Array(5).fill(false),
@@ -306,6 +306,7 @@ class Comment extends React.Component {
         let self = this;
 
         let dfdTasks = [this.getData.call(this)];
+        self.props.dispatch(Actions.setLoading(true));
         $.when.apply(null,dfdTasks).done(function(){
             // self.setState({
             //  loading:false

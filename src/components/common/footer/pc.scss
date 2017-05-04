@@ -19,11 +19,27 @@
 		}
 	}
 	.float-right{
-		i{
+		// i{
+		// 	font-size: 16px;
+		// 	display: inline-block;
+		// 	vertical-align: middle;
+		// 	margin: 0 0 0 20px;
+		// }
+
+		a{
 			font-size: 16px;
-			display: inline-block;
-			vertical-align: middle;
+			color: #CACACA;
 			margin: 0 0 0 20px;
+			float: none;
+			position: relative;
+			z-index: 1;
+			background-position: -99999px;
+		}
+		i{
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
 		}
 	}
 }

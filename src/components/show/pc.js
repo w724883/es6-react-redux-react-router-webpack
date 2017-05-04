@@ -123,29 +123,35 @@ class Show extends Component{
 
 
 	}
-	// componentDidMount(){
-	// 	// console.log(Masonry)
-	// 	// new Masonry(this.refs.mobileItems,{
-	// 	// 	itemSelector: ".J-item"
-	// 	// });
-	// 	var msnry = new Masonry('.show-items', {
-	// 		columnWidth: 100,
-	// 		itemSelector: "li"
-	// 	});
-	// }
+	componentDidMount(){
+		window._bd_share_config = {
+			//此处添加分享具体设置
+			common : {		
+				bdText : '卷时分享',	
+				bdDesc : '',	
+				bdUrl : '', 	
+				bdPic : '',
+			},
+			share : [{
+				"tag" : "share_1",
+				"bdSize" : 16
+			}]
+		};
+		(document.getElementsByTagName('head')[0]||document.body).appendChild(document.createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+(-new Date());
+	}
 
 	render(){
 
 		return (
 			<div className="show">
 				<div className="show-content">
-					<div className="show-nav">
+					<div className="bdsharebuttonbox show-nav" data-tag="share_1">
 						<h2>顾客晒单</h2>
 						<p>分享至</p>
-						<a href="/"><i className="icon-weibo"></i></a>
-						<a href="/"><i className="icon-wechat"></i></a>
-						<a href="/"><i className="icon-douban"></i></a>
-						<a href="/"><i className="icon-twitter"></i></a>
+						<a className="bds_tsina" data-cmd="tsina" href="javascript:;"><i className="icon-weibo"></i></a>
+						<a className="bds_weixin" data-cmd="weixin" href="javascript:;"><i className="icon-wechat"></i></a>
+						<a className="bds_douban" data-cmd="douban" href="javascript:;"><i className="icon-douban"></i></a>
+						<a className="bds_twi" data-cmd="twi" href="javascript:;"><i className="icon-twitter"></i></a>
 					</div>
 					<Masonry
 		                className="show-items"

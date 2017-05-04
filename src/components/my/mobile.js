@@ -13,7 +13,7 @@ import "./mobile.scss";
 
 class My extends React.Component {
 	constructor(props){
-		props.dispatch(Actions.setLoading(true));
+		
 		super();
 		this.state = {
 			username:'',
@@ -248,7 +248,7 @@ class My extends React.Component {
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData.call(this),this.getArea.call(this)];
-
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			// self.setState({
 			// 	loading:false

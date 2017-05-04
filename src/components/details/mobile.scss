@@ -179,6 +179,10 @@
 }
 .detail-desc{
 	padding: 0 15px;
+	overflow: hidden;
+	img{
+		max-width: 100% !important;
+	}
 }
 .detailShow-list{
 	overflow: hidden;

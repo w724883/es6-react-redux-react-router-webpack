@@ -2,16 +2,18 @@ import React from 'react';
 import { Link,IndexLink,browserHistory } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import * as Actions from '../../../actions';
+import {getQuery} from '../index';
+import Search from '../../search/pc';
 import './pc.scss';
 import logo from '../../../static/imgs/logo.png';
-import Layer from '../layer/pc';
-import Search from '../../search/pc';
+// import Layer from '../layer/pc';
 class Nav extends React.Component {
     constructor(){
         super();
+        let keyword = getQuery().keyword;
         this.state = {
             search:false,
-            text:''
+            text:keyword ? keyword : ''
         }
     }
     handlePersonal(e){
@@ -63,7 +65,7 @@ class Nav extends React.Component {
         let text = $.trim(this.state.text);
         if(e.keyCode == 13 && text){
             // this.props.dispatch(Actions.setSearch(text));
-            browserHistory.push('/search?keyword'+text);
+            browserHistory.push('/search?keyword='+text);
         }
 
     }

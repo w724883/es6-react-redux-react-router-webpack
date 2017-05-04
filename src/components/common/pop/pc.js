@@ -7,7 +7,8 @@ import CartJoin from "./cartJoin";
 import CartModify from "./cartModify";
 // import CartAdd from "./cartAdd";
 import Recommend from "./recommend";
-import Myorder from "../../myorder/pc";
+import MyOrder from "../../myorder/pc";
+
 import My from "../../my/pc";
 import Coupon from "../../coupon/pc";
 import Address from "../../address/pc";
@@ -15,13 +16,13 @@ import Notify from "../../notify/pc";
 import "./pc.scss";
 // import CartAdd from "./cartAdd";
 class Pop extends React.Component {
-	handleClose(){
+	handleClose(d){
 		this.props.dispatch(setPop({
 			show:false
 		}));
 		let data = this.props.state.pop.data;
 		if(data && data.cancle){
-			data.cancle();
+			data.cancle(d);
 		}
 	}
 	handleTouchMove(e){
@@ -37,7 +38,7 @@ class Pop extends React.Component {
 	render(){
 		let {state,dispatch} = this.props;
 		let show = state.pop.show;
-		var content = "";
+		let content = null;
 		switch(show){
 			case 'login':
 				content = <Login state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
@@ -48,7 +49,9 @@ class Pop extends React.Component {
 			case 'recommend':
 				content = <Recommend state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
 			case 'myorder':
-				content = <Myorder state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
+				content = <MyOrder state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
+			// case 'orderdetail':
+			// 	content = <OrderDetail state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
 			case 'coupon':
 				content = <Coupon state={state} dispatch={dispatch} handleClose={this.handleClose.bind(this)} handleTouchMove={this.handleTouchMove} handleWheel={this.handleWheel} />;break;
 			case 'address':

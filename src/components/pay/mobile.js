@@ -13,7 +13,7 @@ import "zepto";
 class Pay extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.payType = (window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') ? 1 : 2;
 		this.state = {
 			payType:this.payType
@@ -342,6 +342,7 @@ class Pay extends React.Component {
 		// 	browserHistory.push('/cart');
 		// }
 		let dfdTasks = [this.getData()];
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			// self.setState({

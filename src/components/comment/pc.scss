@@ -1,0 +1,205 @@
+@import '../../static/css/sassCore/_function.scss';
+.comment{
+    padding: 2rem 0 2.625rem;
+}
+.comment-submit{
+    padding: 20px 15px;
+    height: 44px;
+    line-height: 44px;
+    button{
+        font-size: 0.875rem;
+        color: #fff;
+        background: #C34765;
+        padding: 5px 30px;
+        line-height: 44px;
+        height: 44px;
+        border:none;
+        outline: none;
+        display: inline-block;
+        @include border-radius(2px);
+        &[disabled]{
+            opacity: 0.5;
+        }
+    }
+    
+}
+.comment-header{
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(155,154,155,0.2);
+    text-align: center;
+    position: relative;
+    strong{
+        font-size: 18px;
+        color: #4A4A4A;
+        font-weight: 400;
+    }
+    a{
+        padding: 10px 15px;
+        color: #CACACA;
+        font-size: 16px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+.comment-list-img{
+    margin: 0 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #9B9B9B;
+    border-bottom: 1px solid rgba(155,154,155,0.2);
+    li{
+
+        position: relative;
+        overflow: hidden;
+        // white-space: nowrap;
+        // text-overflow: ellipsis;
+        border-bottom: 1px solid #9B9B9B;
+        border-bottom: 1px solid rgba(155,154,155,0.2);
+        margin: 0 0 -1px 0;
+        .vertical-middle{
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            a{
+                display: inline-block;
+                font-size: 0.625rem;
+                color: #fff;
+                background: #CDDA9F;
+                padding: 5px 7px;
+                vertical-align: middle;
+                @include border-radius(1px);
+            }
+        }
+    }
+}
+.comment-list-item{
+    padding: 20px 60px 20px 0;
+    line-height: 1.7;
+    strong{
+        display: block;
+        font-size: 0.75rem;
+        color: #4A4A4A;
+        font-style: normal;
+    }
+    span{
+        font-size: 0.625rem;
+        color: #9B9B9B;
+    }
+    p{
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.comment-list-head{
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #F5F5F5;
+    overflow: hidden;
+    background-position: center;
+    border: 1px solid #CACACA;
+    float: left;
+    @include border-radius(100%);
+    @include background-clip(padding-box);
+    @include background-size(contain);
+}
+.comment-list-text{
+    margin: 0 0 0 50px;
+    overflow: hidden;
+}
+
+.comment-score{
+    padding: 20px 0;
+    margin: 0 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #9B9B9B;
+    border-bottom: 1px solid rgba(155, 154, 155, 0.2);
+    a{
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 1rem;
+        color: #CACACA;
+        &.active{
+            color: #C34765;
+        }
+    }
+    span{
+        float: right;
+        font-size: 0.75rem;
+        color: #CACACA;
+    }
+}
+.comment-text{
+    padding: 20px 0;
+    margin: 0 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #9B9B9B;
+    border-bottom: 1px solid rgba(155, 154, 155, 0.2);
+    position: relative;
+    textarea{
+        font-size: 0.75rem;
+        color: #9B9B9B;
+        height: 100px;
+        width: 100%;
+        display: block;
+        border:none;
+        outline: none;
+    }
+    span{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 0.625rem;
+        color: #CACACA;
+    }
+}
+.comment-upload{
+
+    padding: 20px 0;
+    margin: 0 15px;
+    @include clearfix();
+    li{
+        float: left;
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
+        text-align: center;
+        font-size: 1.25rem;
+        color: #CACACA;
+        margin: 0 10px 10px 0;
+        border: 1px solid rgba(202,202,202,0.3);
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include border-radius(2px);
+        @include background-size(contain);
+        a{
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            font-size: 0.5rem;
+            color: #fff;
+            line-height: 16px;
+            text-align: center;
+            background-color: #C34765;
+            @include border-radius(100%);
+            @include background-clip(padding-box);
+        }
+        input{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            font-size: 0;
+            background-color: transparent;
+            outline: none;
+            border:none;
+            // visibility: hidden;
+        }
+    }
+}

@@ -18,6 +18,23 @@
 // }
 .show-content{
 	padding: 20px 10px;
+	.show-nav{
+		a{
+			font-size: 16px;
+			color: #CACACA;
+			margin: 0 10px;
+			float: none;
+			position: relative;
+			z-index: 1;
+			background-position: -99999px;
+		}
+		i{
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
+		}
+	}
 }
 .show-nav{
 	text-align: center;
@@ -32,11 +49,7 @@
 		color: #CACACA;
 		margin: 30px 0 15px;
 	}
-	a{
-		font-size: 16px;
-		color: #CACACA;
-		margin: 0 10px;
-	}
+	
 }
 .show-items{
 	margin: 50px 0 0;
@@ -70,6 +83,7 @@
 	p{
 		font-size: 16px;
 		color: #9B9B9B;
+		word-break: break-word;
 	}
 }
 .show-info{

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-import Layer from '../layer/mobile';
-import "./mobile.scss";
+import Layer from '../layer/pc';
+import "./pc.scss";
 import gif from "../../../static/imgs/loading.gif";
 
 class Loading extends Component{

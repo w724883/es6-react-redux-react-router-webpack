@@ -1,53 +1,34 @@
 import React from 'react';
 import 'zepto';
 
-import "./mobile.scss"
+import "./pc.scss"
 class Scroll extends React.Component {
     constructor(){
         super();
+        this.page = 1;
         this.state = {
-            text:'下拉加载'
+            text:'加载更多'
         }
     }
-    componentDidMount(){
-        let self = this;
-        let $body = $('body');
-        let height = $(window).height();
-        let $placeholder = $(self.refs.placeholder);
-        let top = $placeholder.offset().top;
-        if(top < height){
-          self.setState({
-              text:''
-          });
+    hanldeClick(){
+        if(this.props.page > this.page){
+            this.props.handleScroll();
+            this.setState({
+                text:'加载中...'
+            });
+            this.page = this.props.page;
         }
-        this.page = this.props.page;
-        $(window).on('scroll',function(){
-            let scrollTop = $body.scrollTop() || $(document).scrollTop();
-            top = $placeholder.offset().top;
-
-            if((scrollTop + height) > top){
-                if(self.props.page > self.page){
-                    self.page = self.props.page;
-                    self.props.handleScroll();
-                }else if(self.props.page < self.page){
-                    self.setState({
-                        text:'翻到底了'
-                    });
-                }else{
-                    self.setState({
-                        text:'加载中...'
-                    });
-                }
-
-            }else{
-              self.setState({
-                  text:''
-              });
-            }
-        });
+    }
+    componentWillUpdate(props) {
+        if(props.page > 0 && props.page < this.page){
+            this.page = 1;
+            this.setState({
+                text:'加载更多'
+            });
+        }
     }
     render(){
-        return <div ref="placeholder" className="scroll-placeholder">{this.state.text}</div>
+        return <div ref="placeholder" onClick={this.hanldeClick.bind(this)} className="scroll-placeholder">{this.props.page == 0 ? '翻到底了' : (this.props.page > this.page ? '加载更多' : this.state.text)}</div>
 
     }
 }

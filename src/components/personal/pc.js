@@ -16,7 +16,7 @@ import "zepto";
 class Personal extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 
 		this.state = {
 			data:{
@@ -151,6 +151,7 @@ class Personal extends React.Component {
 		let self = this;
 
 		let dfdTasks = [this.getData.call(this)];
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 			// self.setState({
@@ -171,33 +172,35 @@ class Personal extends React.Component {
 		let data = this.state.data;
 		return (
 			<div className="personal">
-				<div className="personal-header">
-					<div className="personal-head" style={{backgroundImage:"url("+(data.face ? data.face : "")+")"}}></div>
-					<p className="personal-username">{data.username}</p>
-					<div className="personal-head-line"></div>
-				</div>
+				<div className="main">
+					<div className="personal-header">
+						<div className="personal-head" style={{backgroundImage:"url("+(data.face ? data.face : "")+")"}}></div>
+						<p className="personal-username">{data.username}</p>
+						<div className="personal-head-line"></div>
+					</div>
 
-				<ul className="personal-account">
-					<li>
-						<i className="icon-balance"></i>
-						<span>
-							<strong>{data.balance}</strong>
-							<br />
-							账户余额
-						</span>
-					</li>
-					<li className="personal-account-line"></li>
-					<li>
-						<i className="icon-userpoint"></i>
-						<span>
-							<strong>{data.score}</strong>
-							<br />
-							账户积分
-						</span>
-					</li>
-				</ul>
+					<ul className="personal-account">
+						<li>
+							<i className="icon-balance"></i>
+							<span>
+								<strong>{data.balance}</strong>
+								<br />
+								账户余额
+							</span>
+						</li>
+						<li className="personal-account-line"></li>
+						<li>
+							<i className="icon-userpoint"></i>
+							<span>
+								<strong>{data.score}</strong>
+								<br />
+								账户积分
+							</span>
+						</li>
+					</ul>
+				</div>
 				<div className="personal-list">
-					<ul className="personal-items">
+					<ul className="main personal-items">
 						<li>
 							<Link to="/collection">
 								<i className="icon-liked"></i>
@@ -256,6 +259,7 @@ class Personal extends React.Component {
 						
 					</ul>
 				</div>
+
 				<Nav state={this.props.state} dispatch={this.props.dispatch} />
 				<Footer />
 			</div>

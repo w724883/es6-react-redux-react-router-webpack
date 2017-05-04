@@ -17,7 +17,7 @@ import "./pc.scss";
 class Cart extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			show:{
 				add:false,
@@ -27,6 +27,9 @@ class Cart extends React.Component {
 		}
 	}
 	handleList(key,e){
+		if(this.state.pay){
+			return false;
+		}
 		let $el = $(e.target);
 		if($el.closest('.disable').length){
 			return false;
@@ -43,6 +46,9 @@ class Cart extends React.Component {
 		this.handleNext();
 	}
 	handleAdd(key,e){
+		if(this.state.pay){
+			return false;
+		}
 		let $el = $(e.target);
 		if($el.closest('.disable').length){
 			return false;
@@ -58,6 +64,9 @@ class Cart extends React.Component {
 		this.handleNext();
 	}
 	handleListAll(e){
+		if(this.state.pay){
+			return false;
+		}
 		let value = $(e.target).prop('checked');
 		let cart = this.props.state.cart;
 		let {list} = cart;
@@ -80,6 +89,9 @@ class Cart extends React.Component {
 		this.handleNext();
 	}
 	handleModifyAdd(){
+		if(this.state.pay){
+			return false;
+		}
 		let show = this.state.show;
 		
 		show.add = !show.add;
@@ -114,6 +126,9 @@ class Cart extends React.Component {
 		});
 	}
 	handleRemove(key,id){
+		if(this.state.pay){
+			return false;
+		}
 		let self = this;
 		let {dispatch} = this.props;
 		$.ajax({
@@ -291,6 +306,9 @@ class Cart extends React.Component {
 		}
 	}
 	handleNumber(key,type,value){
+		if(this.state.pay){
+			return false;
+		}
 		let cart = this.props.state.cart;
 		cart[type][key].num = value;
 		this.props.dispatch(Actions.setCart(cart));
@@ -401,6 +419,7 @@ class Cart extends React.Component {
 		let self = this;
 		let {dispatch} = this.props;
 		let dfdTasks = [this.getCartList(dispatch)];
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			// self.setState({
@@ -483,7 +502,7 @@ class Cart extends React.Component {
 					list.length ? (
 						<div className="cart-container">
 							<div className="main">
-								<div className="cart-content">
+								<div className={this.state.pay ? "cart-content disable" : "cart-content"}>
 									<h2>购物车</h2>
 									<ul className="cart-list">
 										<li className="cart-list-header">

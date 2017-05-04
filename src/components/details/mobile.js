@@ -19,7 +19,7 @@ import "./mobile.scss";
 class Details extends Component{
 	constructor(props){
 		super(props);
-		props.dispatch(Actions.setLoading(true));
+		
 		this.getDetail = this.getDetail.bind(this);
 		this.renderDetail = this.renderDetail.bind(this);
 
@@ -349,7 +349,7 @@ class Details extends Component{
 		let self = this;
 		let {dispatch} = this.props;
 		let dfdTasks = [this.getDetail()];
-
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			self.renderInfo();

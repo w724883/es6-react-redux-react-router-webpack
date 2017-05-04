@@ -15,7 +15,7 @@ import "zepto";
 class Personal extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 
 		this.state = {
 			data:{
@@ -120,6 +120,7 @@ class Personal extends React.Component {
 		let self = this;
 
 		let dfdTasks = [this.getData.call(this)];
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 			// self.setState({

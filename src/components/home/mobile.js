@@ -17,7 +17,7 @@ import './mobile.scss';
 class Home extends Component{
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 
 		// this.getFocusData = this.getFocusData.bind(this);
 		// this.handleDeferred = this.handleDeferred.bind(this);
@@ -66,6 +66,7 @@ class Home extends Component{
 		let self = this;
 		let dfdTasks = [this.handleDeferred.call(this)];
 		let {state,dispatch} = this.props;
+		dispatch(Actions.setLoading(true));
 		// 获取滚动图数据
 		if(!this.state.focusData.length){
 			dfdTasks.push(this.getFocusData.call(this));

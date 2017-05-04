@@ -19,7 +19,7 @@ import "./mobile.scss";
 class Show extends Component{
 	constructor(props){
 		super(props);
-		props.dispatch(Actions.setLoading(true));
+		
 		
 		this.state = {
 			data:[],
@@ -121,6 +121,7 @@ class Show extends Component{
 		let self = this;
 		let {dispatch} = this.props;
 		let dfdTasks = [this.initShowData.call(this)];
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 		});

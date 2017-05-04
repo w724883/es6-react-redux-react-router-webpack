@@ -77,20 +77,17 @@ class Login extends React.Component {
 						<div className="login-header">
 							<div className="login-head"><i className="icon-account"></i></div>
 							<p>登录账号</p>
-							<span>若忘记密码请短信找回</span>
 						</div>
 						<ul className="login-box" onChange={this.handleForm.bind(this)}>
 							<li>
-								<label>手机号</label>
-								<input type="number" defaultValue={this.state.phone} name="phone" placeholder="输入注册时的手机号" />
+								<input type="number" defaultValue={this.state.phone} name="phone" placeholder="手机号" />
 							</li>
 							<li>
-								<label>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-								<input type="password" defaultValue={this.state.passwd} name="passwd" placeholder="输入注册时的密码" />
+								<input type="password" defaultValue={this.state.passwd} name="passwd" placeholder="密码" />
 							</li>
 						</ul>
 						<div className="login-footer">
-							<button className="login-enter" onClick={this.handleLogin.bind(this)}>登录卷时</button>
+							<button className="login-enter" onClick={this.handleLogin.bind(this)}>&nbsp;&nbsp;&nbsp;登&nbsp;录&nbsp;&nbsp;&nbsp;</button>
 							<p>
 								<a href="javascript:;" onClick={this.handleRegister.bind(this)}>注册账号</a>
 								<a href="javascript:;" onClick={this.handleForget.bind(this)}>忘记密码</a>

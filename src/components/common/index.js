@@ -1,11 +1,11 @@
 const getQuery = (query) => {
 	query = query ? query : window.location.search;
 	query = query.replace(/^\?+/,'').replace(/&amp;/,'');
-	let querys = query.splite('&'),
+	let querys = query.split('&'),
 		len = querys.length,
 		params = {};
 	while(len--){
-		let items = querys[len].splite('=');
+		let items = querys[len].split('=');
 		if(items[0]){
 			let value = items[1] || '';
 			try{

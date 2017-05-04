@@ -15,6 +15,8 @@ class Focus extends Component {
 			    autoHeight:true,
 			    autoplayDisableOnInteraction:false,
 			    loop: true,
+			    preventClicks:false,
+			    onlyExternal:true
 			    // onInit:function(){
 			    // 	setTimeout(function(){
 			    // 		let dfd = self.props.dfd;

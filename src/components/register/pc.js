@@ -94,7 +94,6 @@ class Register extends React.Component {
                         <div className="register-header">
                             <div className="register-head"><i className="icon-account"></i></div>
                             <p>注册账号</p>
-                            <span>仅支持国内手机号注册</span>
                         </div>
                         <ul className="register-box" onChange={this.handleForm.bind(this)}>
                             <li>

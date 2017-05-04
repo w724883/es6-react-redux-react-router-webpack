@@ -16,7 +16,7 @@ import "zepto";
 class Order extends React.Component {
 	constructor(props){
 		super(props);
-		props.dispatch(Actions.setLoading(true));
+		
 
 		let order = props.state.order;
 
@@ -538,7 +538,7 @@ class Order extends React.Component {
 		let dfdTasks = [this.getData()];
 
 		dispatch(Actions.setLoading(true));
-
+		
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 		});
@@ -643,7 +643,7 @@ class Order extends React.Component {
 				<div className="order-item order-discount">
 					<div className="order-header" onClick={this.handleShow.bind(this,"discount")}>
 						<span className="order-title">优惠抵扣</span>
-						<span className="order-title-desc">省{this.state.cost.discount*1+(this.state.cost.integral/100 < this.beforeIntegral ? this.state.cost.integral/100 : this.beforeIntegral)}元</span>
+						<span className="order-title-desc">省{this.state.cost.discount*1+(this.beforeIntegral == undefined ? 0 : (this.state.cost.integral/100 < this.beforeIntegral ? this.state.cost.integral/100 : this.beforeIntegral))}元</span>
 						<div className="order-header-right">
 							{this.state.discount.show ? "" : <i className="icon-add"></i>}
 						</div>

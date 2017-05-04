@@ -2,22 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link,browserHistory } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-import Layer from '../common/layer/mobile';
-import Area from '../common/area/mobile';
+// import Layer from '../common/layer/mobile';
+import Area from '../common/area/pc';
 import * as Actions from '../../actions';
 import Config from '../../config';
-import {TopFixed,BackFixed} from '../common/fixed/mobile';
+// import {BackFixed} from '../common/fixed/mobile';
 import "zepto";
-import "./mobile.scss";
+import "./pc.scss";
 // console.log(browserHistory)
 class Location extends React.Component {
 	constructor(props){
 		super(props);
-		props.dispatch(Actions.setLoading(true));
-
-		let query = props.location.query;
-		query.area = '';
-		this.state = query;
+		let data = this.props.data ? this.props.data : {};
+		data.show = '';
+		this.state = data;
 	}
 	getData(){
 	    let self = this;
@@ -39,7 +37,9 @@ class Location extends React.Component {
 	        dfd.resolve();
 	      },
 	      error: function(xhr, type){
-	        console.log(type);
+	        self.props.dispatch(Actions.setMessage({
+		    	text:Config.text.network
+		    }));
 	      }
 	    });
 	    return dfd.promise();
@@ -83,7 +83,7 @@ class Location extends React.Component {
 	            self.props.dispatch(Actions.setMessage({
 	                text:res.message
 	            }));
-		    	browserHistory.goBack();
+		    	self.props.handleHide();
 		    }else{
 		        self.props.dispatch(Actions.setMessage({
 		            text:res.message
@@ -91,14 +91,13 @@ class Location extends React.Component {
 		    }
 		  },
 		  error: function(xhr, type){
-		    console.log(type);
+		    self.props.dispatch(Actions.setMessage({
+		    	text:Config.text.network
+		    }));
 		  }
 		});
 		// this.props.handleData(this.state);
 		// this.props.handleClose();
-	}
-	handleBack(){
-		browserHistory.goBack();
 	}
 	handleChange(e){
 		let name = e.target.name;
@@ -115,36 +114,36 @@ class Location extends React.Component {
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData()];
+		// self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
-			self.props.dispatch(Actions.setLoading(false));
+			// self.props.dispatch(Actions.setLoading(false));
 		});
 
 	}
 	render(){
-
 		return (
 			<div className="location">
-				<TopFixed data={this.state.id ? "修改收货地址" : "添加收货地址"} />
+				<p className="location-title">添加收货地址<a href="javascript:;" onClick={this.props.handleClose} className="icon-close"></a></p>
 				<ul className="location-list" onChange={this.handleChange.bind(this)}>
 					<li>
 						<div className="location-item">
-							<label>收货人:</label>
+							<label>收货人</label>
 							<div className="location-input">
-								<input placeholder="请填写" name="username" value={this.state.username ? this.state.username : ''} type="text" />
+								<input placeholder="请填写" name="username" defaultValue={this.state.username ? this.state.username : ''} type="text" />
 							</div>
 						</div>
 					</li>
 					<li>
 						<div className="location-item">
-							<label>手机号:</label>
+							<label>手机号</label>
 							<div className="location-input">
-								<input placeholder="请填写" name="phone" value={this.state.phone ? this.state.phone : ''} type="number" />
+								<input placeholder="请填写" name="phone" defaultValue={this.state.phone ? this.state.phone : ''} type="number" />
 							</div>
 						</div>
 					</li>
 					<li>
-						<div className="location-item" onClick={this.handleArea.bind(this,{area:true})}>
-							<label>地   区:</label>
+						<div className="location-item" onClick={this.handleArea.bind(this,{show:true})}>
+							<label>区域选择</label>
 							<div className="location-input">
 								<input placeholder="请选择" name="region_info_message" value={this.state.region_info_message ? this.state.region_info_message : ''} type="text" readOnly="readOnly" />
 							</div>
@@ -152,24 +151,21 @@ class Location extends React.Component {
 					</li>
 					<li>
 						<div className="location-item">
-							<label>地   址:</label>
+							<label>详细地址</label>
 							<div className="location-input">
-								<input type="text" name="address" value={this.state.address ? this.state.address : ''} placeholder="请填写" />
+								<input type="text" name="address" defaultValue={this.state.address ? this.state.address : ''} placeholder="请填写" />
 							</div>
 						</div>
 					</li>
 				</ul>
-				<BackFixed>
-				    <a href="javascript:;" onClick={this.handleBack.bind(this)}><i className="icon-close"></i></a>
-				    <button className="address-add" onClick={this.handleSubmit.bind(this)}>{this.state.id ? "更新地址" : "添加地址"}</button>
-				</BackFixed>
+				<div className="location-add"><button onClick={this.handleSubmit.bind(this)}>{this.state.id ? "更新地址" : "确认添加"}</button></div>
+				
 				<CSSTransitionGroup
 					component="div"
 	              	transitionEnterTimeout={400}
 	              	transitionLeaveTimeout={400}
 	              	transitionName="transition-address">
-
-						{this.state.area ? <Layer><Area data={this.region} dispatch={this.props.dispatch} handleArea={this.handleArea.bind(this)} /></Layer> : null}
+						{this.state.show ? <Area dispatch={this.props.dispatch} handleArea={this.handleArea.bind(this)} /> : null}
 				</CSSTransitionGroup>
 			</div>
 		)

@@ -19,7 +19,7 @@ import "./pc.scss";
 class Details extends Component{
 	constructor(props){
 		super(props);
-		props.dispatch(Actions.setLoading(true));
+		
 		this.getDetail = this.getDetail.bind(this);
 		this.renderDetail = this.renderDetail.bind(this);
 
@@ -192,6 +192,7 @@ class Details extends Component{
 	renderDetail(value){
 		let self = this;
 		if(typeof value == 'string'){
+
 			return <div className="detail-desc" dangerouslySetInnerHTML={{__html:value}}></div>
 		}else{
 			if($.isArray(value) && value.length){
@@ -217,6 +218,7 @@ class Details extends Component{
 					<li><Scroll page={this.state.showPage} handleScroll={this.handleShowScroll.bind(this)} /></li>
 				</ul>)
 			}else if(typeof value.value == 'string'){
+				// value.value = value.value.replace(/\+/g,"%20");
 				return <div className="detail-desc" dangerouslySetInnerHTML={{__html:decodeURIComponent(value.value)}}></div>
 			}
 		}
@@ -231,6 +233,7 @@ class Details extends Component{
 			    speed:500,
 			    autoHeight:true,
 			    paginationType:'custom',
+			    onlyExternal:true,
 			    paginationCustomRender: function (swiper, current, total) {
 
 			    	let str = '';
@@ -372,7 +375,7 @@ class Details extends Component{
 		let self = this;
 		let {dispatch} = this.props;
 		let dfdTasks = [this.getDetail()];
-
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			self.renderInfo();
@@ -421,12 +424,12 @@ class Details extends Component{
 		let attr_name = detailData.attr_name ? Object.keys(detailData.attr_name) : detailData.attr_name;
 		if(attr_name){
 			attr_name = attr_name.map((value,key) => (
-				<div className="details-filter-item">
+				<div key={key} className="details-filter-item">
 					<label>{detailData.attr_name[value]}</label>
 					<ul>
 						{
 							detailData.sku_arr && detailData.sku_arr[value] && detailData.sku_arr[value].length && detailData.sku_arr[value].map((v,k) => {
-									return <li className={v == this.state.params.goods_attribute[value] ? "active" : ""} onClick={this.handleAttr.bind(this,value,v)}>{v}</li>
+									return <li key={k} className={v == this.state.params.goods_attribute[value] ? "active" : ""} onClick={this.handleAttr.bind(this,value,v)}>{v}</li>
 
 								})
 						}
@@ -514,7 +517,7 @@ class Details extends Component{
 					    <div className="swiper-wrapper">
 					    	{
 					    		detailInfo.map((value,key) => (
-			    					<div className="swiper-slide">
+			    					<div key={key} className="swiper-slide">
 			    						{
 			    							self.renderDetail(value)
 			    						}

@@ -16,6 +16,7 @@
 		overflow: hidden;
 		padding: 50px 0;
 		background-color: #F5F5F5;
+		min-height: 700px;
 	}
 	
 	// margin: 50px auto;
@@ -30,7 +31,20 @@
 	// width: 65%;
 	// float: left;
 	display: table-cell;
+	position: relative;
 	width: 100%;
+	&.disable:after{
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 99;
+	}
 }
 .cart-table{
 	display: table-cell;
@@ -121,7 +135,7 @@
 .cart-list-head{
 	display: block;
 	float: left;
-	width: 75px;
+	width: 100px;
 	height: 100px;
 	background: #F5F5F5;
 	border: 1px solid #CACACA;
@@ -129,11 +143,11 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	// @include border-radius(100%);
-	@include background-size(contain);
+	@include background-size(cover);
 	// @include background-clip(padding-box);
 }
 .cart-list-info{
-	margin: 0 0 0 100px;
+	margin: 0 0 0 125px;
 	width: 100%;
 	font-size: 14px;
 	white-space: nowrap;

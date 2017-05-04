@@ -15,7 +15,7 @@ import "./pc.scss";
 class Coupon extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
 			type:1
@@ -46,7 +46,7 @@ class Coupon extends React.Component {
 		  			    freeMode: true
 		  			});
 		  		}else{
-		  			self.swiper.updateContainerSize();
+		  			this.swiper.update(true);
 		  		}
 		  	}else if(res.code == 401){
 		  		// if(window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger' && !!$.fn.cookie('wechat')){
@@ -85,9 +85,16 @@ class Coupon extends React.Component {
 		});
 		return dfd.promise();
 	}
+	handleClose(){
+		this.props.handleClose();
+		if(this.swiper){
+			this.swiper.destroy();
+		}
+	}
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData()];
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 		});
@@ -96,7 +103,7 @@ class Coupon extends React.Component {
 	render(){
 		return (
 			<div className="pop" onTouchMove={this.props.handleTouchMove}>
-			    <div className="pop-bg" onClick={this.props.handleClose} onWheel={this.props.handleWheel}></div>
+			    <div className="pop-bg" onClick={this.handleClose.bind(this)} onWheel={this.props.handleWheel}></div>
 			    <div className="pop-box coupon">
 			    	<div className="swiper-container">
 			    		<div className="swiper-wrapper">
@@ -120,7 +127,7 @@ class Coupon extends React.Component {
 						<div className="swiper-scrollbar"></div>
 				    </div>
 			        <PopFixed title="优惠券" handleSelect={this.getData.bind(this)} data={[{key:0,value:'全部优惠券'},{key:1,value:'未使用'},{key:2,value:'已使用'},{key:3,value:'已失效'}]} />
-			        <a href="javascript:;" onClick={this.props.handleClose} className="icon-close pop-close"></a>
+			        <a href="javascript:;" onClick={this.handleClose.bind(this)} className="icon-close pop-close"></a>
 			    </div>
 			    
 			</div>

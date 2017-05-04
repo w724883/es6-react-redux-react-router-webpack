@@ -82,7 +82,7 @@ class Area extends React.Component {
                             <ul className="area-head">
                                 {
                                     this.state.params.map((value,key) => (
-                                        <li>{value}</li>
+                                        <li key={key}>{value}</li>
                                     ))
                                 }
                             </ul>
@@ -118,7 +118,7 @@ class Area extends React.Component {
 
                                                                                 }else{
                                                                                    return (
-                                                                                       <div className="area-item J-item" data-name={nv.region_name}>
+                                                                                       <div key={nk} className="area-item J-item" data-name={nv.region_name}>
                                                                                            {nv.region_name}
                                                                                        </div>
                                                                                    )
@@ -133,7 +133,7 @@ class Area extends React.Component {
                                                                     }
                                                                 }else{
                                                                    return (
-                                                                       <div className="area-item J-item" data-name={tv.region_name}>
+                                                                       <div key={tk} className="area-item J-item" data-name={tv.region_name}>
                                                                            {tv.region_name}
                                                                        </div>
                                                                    )
@@ -148,7 +148,7 @@ class Area extends React.Component {
                                                     }
                                                 }else{
                                                     return (
-                                                        <div className="area-item J-item" data-name={sv.region_name}>
+                                                        <div key={sk} className="area-item J-item" data-name={sv.region_name}>
                                                             {sv.region_name}
                                                         </div>
                                                     )
@@ -163,7 +163,7 @@ class Area extends React.Component {
                                     }
                                 }else{
                                     return (
-                                        <div className="area-item J-item" data-name={value.region_name}>
+                                        <div key={key} className="area-item J-item" data-name={value.region_name}>
                                             {value.region_name}
                                         </div>
                                     )

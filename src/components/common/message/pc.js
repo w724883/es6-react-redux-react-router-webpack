@@ -2,7 +2,7 @@ import React from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import 'zepto';
-import "./mobile.scss";
+import "./pc.scss";
 
 class Message extends React.Component {
     // constructor(props){

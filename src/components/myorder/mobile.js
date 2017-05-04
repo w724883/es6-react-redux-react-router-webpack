@@ -15,7 +15,7 @@ import "./mobile.scss";
 class MyOrder extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
 			detail:null,
@@ -264,7 +264,7 @@ class MyOrder extends React.Component {
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.initData.call(this,this.state.type)];
-
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			// self.setState({
 			// 	loading:false
@@ -283,7 +283,7 @@ class MyOrder extends React.Component {
 						<div className="myorder-list">
 							{
 								this.state.data.map((value,key) => {
-									return <ul>
+									return <ul key={key}>
 										<li className="myorder-list-header" onClick={this.getDetail.bind(this,value.id)}>
 											<strong>订单号 # {value.order_sn}</strong>
 											<span>{value.addtime}</span>
@@ -300,7 +300,7 @@ class MyOrder extends React.Component {
 										</li>
 										{
 											value.goods_info && value.goods_info.length ? value.goods_info.map((v,k) => (
-												<li className="myorder-list-item">
+												<li key={k} className="myorder-list-item">
 													<div className="myorder-list-head" style={{backgroundImage:'url('+v.goods_cover+')'}}></div>
 													<div className="myorder-list-text">
 														<strong>{v.goods_name}</strong>
@@ -323,7 +323,7 @@ class MyOrder extends React.Component {
 										}
 										{
 											value.addition_info && value.addition_info.length ? value.addition_info.map((v,k) => (
-												<li className="myorder-list-item">
+												<li key={k} className="myorder-list-item">
 													<div className="myorder-list-head" style={{backgroundImage:'url('+v.addition_goods_cover+')'}}></div>
 													<div className="myorder-list-text">
 														<strong>{v.addition_goods_name}</strong>
@@ -373,14 +373,14 @@ class MyOrder extends React.Component {
 									<ul className="pay-list">
 										{
 											detail.detail && detail.detail.length ? detail.detail.map((value,key) => (
-												<li><span>{value.title}</span><span className="pay-right">{value.type == 0 ? '-' : (value.type == 1 ? '+' : '')} ¥ {value.content}</span></li>
+												<li key={key}><span>{value.title}</span><span className="pay-right">{value.type == 0 ? '-' : (value.type == 1 ? '+' : '')} ¥ {value.content}</span></li>
 											)) : null
 										}
 									</ul>
 									<ul className="pay-list">
 										{
 											detail.describe && detail.describe.length ? detail.describe.map((value,key) => (
-												<li><span>{value.title}</span><span className="pay-right" style={{width:'70%'}}>{value.content}</span></li>
+												<li key={key}><span>{value.title}</span><span className="pay-right" style={{width:'70%'}}>{value.content}</span></li>
 											)) : null
 										}
 									</ul>
@@ -388,7 +388,7 @@ class MyOrder extends React.Component {
 										detail.paytype && detail.paytype.length ? <ul className="pay-list">
 											{
 												detail.paytype.map((value,key) => (
-													<li><span>{value.title}</span><span className="pay-right">¥ {value.content}</span></li>
+													<li key={key}><span>{value.title}</span><span className="pay-right">¥ {value.content}</span></li>
 												))
 											}
 										</ul> : null

@@ -148,7 +148,7 @@ class PopFixed extends Component{
                             <select>
                                 {
                                     this.props.data.map((value,key) => (
-                                       <option value={value.key}>{value.value}</option> 
+                                       <option key={key} value={value.key}>{value.value}</option> 
                                     ))
                                 }
                             </select>

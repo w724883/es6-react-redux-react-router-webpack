@@ -1,5 +1,5 @@
 import React from 'react';
-import "./mobile.scss";
+import "./pc.scss";
 class Layer extends React.Component {
 	// handleTouchstart(e){
 	// 	e.preventDefault();

@@ -167,7 +167,10 @@ if(M){
 }else{
   config.entry.pc = [
     './src/pc.js'
-  ]
+  ];
+  config.entry.receive = [
+    './src/components/receive/index.js'
+  ];
 }
 
 
@@ -200,13 +203,13 @@ if(DEBUG){
     // config.plugins.push(new CopyWebpackPlugin([
     //     { from: './src/test',to:'./test' }
     // ]));
-    config.plugins.push(new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': '"production"'
-      },
-      DEBUG:DEBUG,
+    // config.plugins.push(new webpack.DefinePlugin({
+    //   'process.env': {
+    //     'NODE_ENV': '"production"'
+    //   },
+    //   DEBUG:DEBUG,
 
-    }));
+    // }));
 
     // 配置静态资源引入路径
     config.output.publicPath = '/public/frontend';

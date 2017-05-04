@@ -86,6 +86,27 @@ class Order extends React.Component {
 		}
 		this.setState(state);
 	}
+	handleAddress(){
+		let self = this;
+		this.props.dispatch(Actions.setPop({
+			show:'address',
+			data:{
+				cancle:function(d){
+					let username = d.username;
+					let phone = d.phone;
+					if(username){
+						let distribution = self.state.distribution;
+						distribution.address.username = username;
+						distribution.address.phone = phone;
+						self.setState({
+							distribution
+						});
+					}
+					
+				}
+			}
+		}));
+	}
 	handleDistribution(e){
 		let self = this;
 		let value = e.target.value;
@@ -353,16 +374,15 @@ class Order extends React.Component {
 	// 	$.extend(order,state);
 	// 	dispatch(Actions.setOrder(order));
 	// }
-	componentWillUpdate(nextProps, nextState) {
-	    console.log(this.getTotal());  
+	componentWillUpdate(props) {
+	    this.getTotal();  
 	}
 	componentWillMount(){
 		let {data} = this.props;
-
   		
   		let calendar = this.state.calendar;
   		let distribution = this.state.distribution;
-
+  		// data.reserve_start_time = "2017-01-05";
   		this.distribution = data.shipping_mode;
   		distribution.address = data.address_list;
   		calendar.show = true;
@@ -370,6 +390,7 @@ class Order extends React.Component {
   			// calendar.data = reserve_start_time[0]+"年"+reserve_start_time[1]+"月"+reserve_start_time[2]+"日";
   			calendar.data = data.reserve_start_time;
   		}
+  		// this.getTotal(); 
   		this.setState({
   			calendar,
   			distribution
@@ -424,7 +445,6 @@ class Order extends React.Component {
 	// </label>
 	render(){
 		let distribution = this.distribution;
-		
 		// <span className="order-title-desc">{this.state.distribution.time ? ' '+this.state.distribution.time : ''}</span>
 		return (
 			<div className="order">
@@ -478,7 +498,7 @@ class Order extends React.Component {
 							}
 							<span>{this.state.distribution.address.username} </span>
 							<span> {this.state.distribution.address.phone}</span>
-							<Link to={{pathname: Config.path.address, state:{from:'/order',data:this.props.state.cart.list}}}>{this.state.distribution.address.length != 0 ? '更改' : '添加'}</Link>
+							<a onClick={this.handleAddress.bind(this)} href="javascript:;">{this.state.distribution.address.length != 0 ? '更改' : '添加'}</a>
 							<p>{this.state.distribution.address.length != 0 ? (this.state.distribution.type == 1 ? this.state.distribution.address.region_message+this.state.distribution.address.address : null) : '请添加收货人信息'}</p>
 							
 						</div>
@@ -487,7 +507,7 @@ class Order extends React.Component {
 				<div className={this.state.discount.show ? "order-item order-discount active" : "order-item order-discount"}>
 					<div className="order-header" onClick={this.handleShow.bind(this,"discount")}>
 						<span className="order-title">优惠抵扣</span>
-						<span className="order-title-desc">省{this.state.cost.discount*1+(this.state.cost.integral/100 < this.beforeIntegral ? this.state.cost.integral/100 : this.beforeIntegral)}元</span>
+						<span className="order-title-desc">省{this.state.cost.discount*1+(this.beforeIntegral == undefined ? 0 : (this.state.cost.integral/100 < this.beforeIntegral ? this.state.cost.integral/100 : this.beforeIntegral))}元</span>
 						<div className="order-header-right">
 							{this.state.discount.show ? "" : <i className="icon-add"></i>}
 						</div>

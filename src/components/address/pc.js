@@ -7,7 +7,7 @@ import { Link,browserHistory } from 'react-router';
 import Swiper from 'swiper';
 import * as Actions from '../../actions';
 import Config from '../../config';
-// import Location from '../location/mobile';
+import Location from '../location/pc';
 // import Area from '../area/mobile';
 import {PopFixed} from '../common/fixed/pc';
 import "zepto";
@@ -16,10 +16,10 @@ import "./pc.scss";
 class Address extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
-			// key:'',
+			location:'',
 			// area:''
 		}
 	}
@@ -136,7 +136,7 @@ class Address extends React.Component {
 		  		}));
 
 		  		if(self.swiper){
-		  			self.swiper.updateContainerSize();
+		  			this.swiper.update(true);
 		  		}
 		  	}else{
 		  		self.props.dispatch(Actions.setMessage({
@@ -151,8 +151,35 @@ class Address extends React.Component {
 		  }
 		});
 	}
-	handleAddLocation(){
-		browserHistory.push('/location');
+	handleEdit(key){
+		this.setState({
+			location:key
+		});
+	}
+	showLocation(){
+		this.setState({
+			location:this.state.data.length
+		});
+	}
+	hideLocation(){
+		this.setState({
+			location:''
+		});
+	}
+	handleClose(){
+		let data = this.state.data;
+		let d = {};
+		for(let i = 0; i < data.length; i++){
+			if(Number(data[i].default)){
+				d.username = data[i].username;
+				d.phone = data[i].phone;
+				break;
+			}
+		}
+		this.props.handleClose(d);
+		if(this.swiper){
+			this.swiper.destroy();
+		}
 	}
 	// handleModifyLocation(key,e){
 	// 	e.preventDefault();
@@ -192,36 +219,36 @@ class Address extends React.Component {
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData()];
-
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 		});
 
 	}
 	render(){
-		let params = this.state.data[this.state.key] ? this.state.data[this.state.key] : {
-			username:"",
-			phone:"",
-			region_info_message:"",
-			address:""
-		};
-		let location = this.props.location;
+		// let params = this.state.data[this.state.key] ? this.state.data[this.state.key] : {
+		// 	username:"",
+		// 	phone:"",
+		// 	region_info_message:"",
+		// 	address:""
+		// };
+		// let location = this.props.location;
 		return (
 			<div className="pop" onTouchMove={this.props.handleTouchMove}>
-			    <div className="pop-bg" onClick={this.props.handleClose} onWheel={this.props.handleWheel}></div>
+			    <div className="pop-bg" onClick={this.handleClose.bind(this)} onWheel={this.props.handleWheel}></div>
 			    <div className="pop-box address">
 					<div className="swiper-container">
 						<div className="swiper-wrapper">
 							<ul className="swiper-slide address-list">
 								{
 									this.state.data.length ? this.state.data.map((value,key) => (
-										<li className={Number(value.default) ? 'active' : ''}>
+										<li key={key} className={Number(value.default) ? 'active' : ''}>
 											<div className="address-item">
 												<div className="address-username" onClick={this.handleDefault.bind(this,key,value.id,value.default)}>{value.username}</div>
 												<div className="address-phone">{value.phone}</div>
 												<div className="address-location" onClick={this.handleDefault.bind(this,key,value.id,value.default)}>{value.region_info_message} {value.address}</div>
 												<a href="javascript:;" onClick={this.handleDelete.bind(this,key,value.id)} className="icon-close"></a>
-												<Link to="/location" query={this.state.data[key]} className="icon-edit"></Link>
+												<a href="javascript:;" onClick={this.handleEdit.bind(this,key)} className="icon-edit"></a>
 											</div>
 										</li>
 									)) : null
@@ -230,10 +257,17 @@ class Address extends React.Component {
 							<div className="swiper-scrollbar"></div>
 						</div>
 					</div>
-			        <PopFixed title="收货地址" data={<a onClick={this.handleAddLocation.bind(this)} href="javascript:;">添加<i className="icon-add"></i></a>} />
-			        <a href="javascript:;" onClick={this.props.handleClose} className="icon-close pop-close"></a>
+					{
+						this.state.location !== '' ? (
+							<div className="pop-location">
+								<Location handleClose={this.hideLocation.bind(this)} handleHide={this.props.handleClose} data={this.state.data[this.state.location]} />
+							</div>
+						) : null
+					}
+					
+			        <PopFixed title="收货地址" data={<a onClick={this.showLocation.bind(this)} href="javascript:;">添加<i className="icon-add"></i></a>} />
+			        <a href="javascript:;" onClick={this.handleClose.bind(this)} className="icon-close pop-close"></a>
 			    </div>
-			    
 			</div>
 		)
 	}

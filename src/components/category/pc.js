@@ -235,7 +235,7 @@ class Category extends Component{
 					<div className="main">
 				    	{
 				    		(this.state.menu && this.state.menu.length) ? this.state.menu.map((value,key) => (
-			    				<a href="javascript:;" data-id={value.id} className={this.state.id == value.id ? "active" : ""}>
+			    				<a key={key} href="javascript:;" data-id={value.id} className={this.state.id == value.id ? "active" : ""}>
 			    					<img src={value.icon} />
 			    					<span>{value.name}</span>
 			    				</a>

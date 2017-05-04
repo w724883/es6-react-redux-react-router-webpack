@@ -15,7 +15,7 @@ import "./pc.scss";
 class Notify extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
 			page:1
@@ -98,7 +98,7 @@ class Notify extends React.Component {
 	  			});
 
 	  			if(self.swiper){
-	  				self.swiper.updateContainerSize();
+	  				self.swiper.update(true);
 	  			}
 		  	}else if(res.code == 401){
 		  		// if(window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger' && !!$.fn.cookie('wechat')){
@@ -145,9 +145,16 @@ class Notify extends React.Component {
 		}
 		return title;
 	}
+	handleClose(){
+		this.props.handleClose();
+		if(this.swiper){
+			this.swiper.destroy();
+		}
+	}
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.initMessageData.call(this)];
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 		});
@@ -157,33 +164,34 @@ class Notify extends React.Component {
 
 		return (
 			<div className="pop" onTouchMove={this.props.handleTouchMove}>
-			    <div className="pop-bg" onClick={this.props.handleClose} onWheel={this.props.handleWheel}></div>
+			    <div className="pop-bg" onClick={this.handleClose.bind(this)} onWheel={this.props.handleWheel}></div>
 			    <div className="pop-box notify">
 					<div className="swiper-container">
 						<div className="swiper-wrapper">
-
-							<ul className="swiper-slide notify-list">
-								{
-									this.state.data.length ? this.state.data.map((value,key) => (
-										<li className="notify-item">
-											<div className="notify-item-title">
-												<p>{this.getType(value.type)}</p>
-												{value.status > 0 ? <em style={{backgroundColor:'#CACACA'}}>已读</em> : <em style={{backgroundColor:'#C34765'}}>未读</em>}
-												<span>{new Date(parseInt(value.addtime) * 1000).toLocaleString()}</span>
-											</div>
-											<div className="notify-item-desc">
-												{value.contents}
-											</div>
-										</li>
-									)) : <li style={{padding: '60px 0 0', textAlign: 'center', fontSize: '14px'}}>暂无消息</li>
-								}
-							</ul>
+							<div className="swiper-slide">
+								<ul className="notify-list">
+									{
+										this.state.data.length ? this.state.data.map((value,key) => (
+											<li key={key} className="notify-item">
+												<div className="notify-item-title">
+													<p>{this.getType(value.type)}</p>
+													{value.status > 0 ? <em style={{backgroundColor:'#CACACA'}}>已读</em> : <em style={{backgroundColor:'#C34765'}}>未读</em>}
+													<span>{new Date(parseInt(value.addtime) * 1000).toLocaleString()}</span>
+												</div>
+												<div className="notify-item-desc">
+													{value.contents}
+												</div>
+											</li>
+										)) : <li style={{padding: '60px 0 0', textAlign: 'center', fontSize: '14px'}}>暂无消息</li>
+									}
+								</ul>
+								<Scroll page={this.state.page} handleScroll={this.handleScroll.bind(this)} />
+							</div>
 						</div>
 						<div className="swiper-scrollbar"></div>
 					</div>
-					<Scroll page={this.state.page} handleScroll={this.handleScroll.bind(this)} />
 					<PopFixed title="系统消息" />
-			        <a href="javascript:;" onClick={this.props.handleClose} className="icon-close pop-close"></a>
+			        <a href="javascript:;" onClick={this.handleClose.bind(this)} className="icon-close pop-close"></a>
 				</div>
 			</div>
 		)

@@ -13,7 +13,7 @@ import "zepto";
 class Pay extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.payType = 1;
 		this.state = {
 			payType:this.payType
@@ -27,7 +27,7 @@ class Pay extends React.Component {
 		  data:{
 		  	id:id,
 			pay_way:4,
-			pay_role:'wap'
+			pay_role:'web'
 		  },
 		  dataType: Config.dataType,
 		  success: function(res){
@@ -73,7 +73,7 @@ class Pay extends React.Component {
 		  data:{
 		  	id:id,
 			pay_way:3,
-			pay_role:'wap'
+			pay_role:'web'
 		  },
 		  dataType: Config.dataType,
 		  success: function(res){
@@ -130,7 +130,7 @@ class Pay extends React.Component {
 				let params = {
 				  	id:id,
 					pay_way:(order_amount == this.total) ? this.state.payType : (this.state.payType+',3'),
-					pay_role:'wap'
+					pay_role:'web'
 			  	}
 				window.location.href = Config.api.pay+'?'+$.param(params);
 				return false;
@@ -145,7 +145,7 @@ class Pay extends React.Component {
 		let params = {
 		  	id:id,
 			pay_way:this.state.order_info.pay_id,
-			pay_role:'wap'
+			pay_role:'web'
 	  	}
 		window.location.href = Config.api.pay+'?'+$.param(params);
 		return false;
@@ -297,6 +297,7 @@ class Pay extends React.Component {
 		// 	browserHistory.push('/cart');
 		// }
 		let dfdTasks = [this.getData()];
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			// self.setState({
@@ -324,7 +325,7 @@ class Pay extends React.Component {
 					<ul className="pay-list">
 						{
 							state.detail && state.detail.length ? state.detail.map((value,key) => (
-								<li><span>{value.title}</span><span className="pay-right">{value.type == 0 ? '-' : (value.type == 1 ? '+' : '')} ¥ {value.content}</span></li>
+								<li key={key}><span>{value.title}</span><span className="pay-right">{value.type == 0 ? '-' : (value.type == 1 ? '+' : '')} ¥ {value.content}</span></li>
 							)) : null
 						}
 						{
@@ -334,7 +335,7 @@ class Pay extends React.Component {
 					<ul className="pay-list">
 						{
 							state.describe && state.describe.length ? state.describe.map((value,key) => (
-								<li><span>{value.title}</span><span className="pay-right" style={{width:'70%'}}>{value.content}</span></li>
+								<li key={key}><span>{value.title}</span><span className="pay-right" style={{width:'70%'}}>{value.content}</span></li>
 							)) : null
 						}
 					</ul>
@@ -342,7 +343,7 @@ class Pay extends React.Component {
 						state.paytype && state.paytype.length ? <ul className="pay-list">
 							{
 								state.paytype.map((value,key) => (
-									<li><span>{value.title}</span><span className="pay-right">¥ {value.content}</span></li>
+									<li key={key}><span>{value.title}</span><span className="pay-right">¥ {value.content}</span></li>
 								))
 							}
 						</ul> : null

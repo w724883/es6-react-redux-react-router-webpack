@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link,browserHistory } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import Swiper from 'swiper';
-import Layer from '../common/layer/mobile';
-import Area from '../common/area/mobile';
+import Area from '../common/area/pc';
+// import Layer from '../common/layer/mobile';
+// import Area from '../common/area/mobile';
 import * as Actions from '../../actions';
 import Config from '../../config';
 import {PopFixed} from '../common/fixed/pc';
@@ -14,7 +15,7 @@ import "./pc.scss";
 
 class My extends React.Component {
 	constructor(props){
-		props.dispatch(Actions.setLoading(true));
+		
 		super();
 		this.state = {
 			username:'',
@@ -256,10 +257,16 @@ class My extends React.Component {
 		  }
 		});
 	}
+	handleClose(){
+		this.props.handleClose();
+		if(this.swiper){
+			this.swiper.destroy();
+		}
+	}
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData.call(this),this.getArea.call(this)];
-
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			// self.setState({
 			// 	loading:false
@@ -272,16 +279,16 @@ class My extends React.Component {
 		let state = this.state;
 		return (
 			<div className="pop" onTouchMove={this.props.handleTouchMove}>
-			    <div className="pop-bg" onClick={this.props.handleClose} onWheel={this.props.handleWheel}></div>
+			    <div className="pop-bg" onClick={this.handleClose.bind(this)} onWheel={this.props.handleWheel}></div>
 			    <div className="pop-box my">
 					<div className="swiper-container">
 						<div className="swiper-wrapper">
-							<ul className="swiper-slide my-list" onChange={this.handleChange.bind(this)}>
+							<ul className="swiper-slide my-list">
 								<li>
 									<div className="my-item">
 										<label>姓 名</label>
 										<div className="my-input">
-											<input type="text" name="username" value={state.username} />
+											<input type="text" name="username" onChange={this.handleChange.bind(this)} value={state.username ? state.username : ''} />
 										</div>
 									</div>
 								</li>
@@ -289,7 +296,7 @@ class My extends React.Component {
 									<div className="my-item">
 										<label>性 别</label>
 										<div className="my-input">
-											<select name="sex" value={state.sex}>
+											<select name="sex" onChange={this.handleChange.bind(this)} value={state.sex}>
 												<option value="1">男</option>
 												<option value="0">女</option>
 											</select>
@@ -300,7 +307,7 @@ class My extends React.Component {
 									<div className="my-item">
 										<label>生 日</label>
 										<div className="my-input">
-											<input type="date" name="birthday" value={state.birthday ? state.birthday : ''} />
+											<input type="date" name="birthday" onChange={this.handleChange.bind(this)} value={state.birthday ? state.birthday : ''} />
 										</div>
 									</div>
 								</li>
@@ -316,7 +323,7 @@ class My extends React.Component {
 									<div className="my-item">
 										<label>地 址</label>
 										<div className="my-input">
-											<input type="text" name="address" value={state.address} />
+											<input type="text" name="address" onChange={this.handleChange.bind(this)} value={state.address ? state.address : ''} />
 										</div>
 									</div>
 								</li>
@@ -350,8 +357,14 @@ class My extends React.Component {
 						<div className="swiper-scrollbar"></div>
 					</div>
 					<PopFixed title="个人资料" data={<a href="javascript:;" onClick={this.handleSubmit.bind(this)}>确认修改</a>} />
-			        <a href="javascript:;" onClick={this.props.handleClose} className="icon-close pop-close"></a>
-
+			        <a href="javascript:;" onClick={this.handleClose.bind(this)} className="icon-close pop-close"></a>
+        			<CSSTransitionGroup
+        				component="div"
+                      	transitionEnterTimeout={400}
+                      	transitionLeaveTimeout={400}
+                      	transitionName="transition-address">
+        					{this.state.show ? <Area dispatch={this.props.dispatch} handleArea={this.handleArea.bind(this)} /> : null}
+        			</CSSTransitionGroup>
 				</div>
 			</div>
 		)

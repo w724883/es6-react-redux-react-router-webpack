@@ -12,10 +12,10 @@
 		font-size: 18px;
 		color: #9B9B9B;
 	}
-	span{
-		font-size: 14px;
-		color: #CACACA;
-	}
+	// span{
+	// 	font-size: 14px;
+	// 	color: #CACACA;
+	// }
 }
 .login-head{
 	width: 3.75rem;
@@ -52,14 +52,14 @@
 			@include gradient-horizontal(transparent 0%,#B3B3B3 50%,#B3B3B3 50%,transparent);
 		}
 	}
-	label{
-		display: block;
-		margin: 0 0 4px;
-		color: #CACACA;
-		height: 100%;
-		font-size: 14px;
-		color: #CACACA;
-	}
+	// label{
+	// 	display: block;
+	// 	margin: 0 0 4px;
+	// 	color: #CACACA;
+	// 	height: 100%;
+	// 	font-size: 14px;
+	// 	color: #CACACA;
+	// }
 	input{
 		display: block;
 		width: 100%;

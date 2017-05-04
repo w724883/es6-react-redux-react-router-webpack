@@ -15,7 +15,7 @@ import "./mobile.scss";
 class Address extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			data:[],
 			// key:'',
@@ -177,7 +177,7 @@ class Address extends React.Component {
 	componentWillMount(){
 		let self = this;
 		let dfdTasks = [this.getData()];
-
+		self.props.dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			self.props.dispatch(Actions.setLoading(false));
 		});

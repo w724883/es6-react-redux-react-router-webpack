@@ -14,16 +14,6 @@ import 'zepto';
 import 'babel-polyfill';
 import '../static/css/mobile.scss';
 
-
-// 设备宽度
-// $(window).on('resize',function(e){
-// 	let $width = $(window).width();
-// 	// dispatch(Actions.setWidth($width));
-// 	if($width > Config.media){
-// 		window.location.href = 'http://www.ijuanshi.com/';
-// 	}
-// }).trigger('resize');
-// let timer;
 class App extends Component{
 	// componentWillMount(){
 	// 	if(($.fn.cookie('is_complete') == 1) && (window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') && !!$.fn.cookie('user_id')){
@@ -32,16 +22,18 @@ class App extends Component{
 	// 	}
 		
 	// }
+	componentWillUpdate(props) {
+		let {state,dispatch} = props;
+		if(state.message.text){
+
+	        dispatch(Actions.setMessage({
+	            text:''
+	        }));
+		}
+	}
 	render(){
 		let {state,dispatch} = this.props;
 		// let boundActionCreators = bindActionCreators(Actions, dispatch);
-		if(state.message.text){
-
-		        dispatch(Actions.setMessage({
-		            text:''
-		        }));
-
-		}
 		console.log(state);
 		return (
 			<div>

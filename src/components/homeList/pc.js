@@ -217,6 +217,8 @@ class HomeList extends Component{
 			    speed:500,
 			    autoHeight:true,
 			    paginationType:'custom',
+			    preventClicks:false,
+			    onlyExternal:true,
 			    paginationCustomRender: function (swiper, current, total) {
 
 			    	let str = '';

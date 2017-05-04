@@ -13,7 +13,7 @@ import "./mobile.scss";
 class Cart extends React.Component {
 	constructor(props){
 		super();
-		props.dispatch(Actions.setLoading(true));
+		
 		this.state = {
 			show:{
 				add:false
@@ -301,6 +301,7 @@ class Cart extends React.Component {
 		let self = this;
 		let {dispatch} = this.props;
 		let dfdTasks = [this.getCartList(dispatch)];
+		dispatch(Actions.setLoading(true));
 		$.when.apply(null,dfdTasks).done(function(){
 			dispatch(Actions.setLoading(false));
 			// self.setState({
